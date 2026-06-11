@@ -1,122 +1,188 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+
+// SVG Icon for expand/collapse
+const ChevronRight = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+);
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState(null);
+  const [selectedCompany, setSelectedCompany] = useState('');
+  const [selectedQuarter, setSelectedQuarter] = useState('');
+  const [expandedCategories, setExpandedCategories] = useState({});
+
+  useEffect(() => {
+    // Fetch the processed data
+    fetch('/data/all_shp_data.json')
+      .then(res => res.json())
+      .then(json => {
+        setData(json);
+        if (json.companies && json.companies.length > 0) {
+          const firstCompany = json.companies[0];
+          setSelectedCompany(firstCompany);
+          
+          const quarters = Object.keys(json.data[firstCompany]);
+          if (quarters.length > 0) {
+            setSelectedQuarter(quarters[0]);
+          }
+        }
+      })
+      .catch(err => console.error("Failed to load data", err));
+  }, []);
+
+  // Update quarter when company changes
+  useEffect(() => {
+    if (data && selectedCompany && data.data[selectedCompany]) {
+      const quarters = Object.keys(data.data[selectedCompany]);
+      if (quarters.length > 0 && !quarters.includes(selectedQuarter)) {
+        setSelectedQuarter(quarters[0]);
+      }
+    }
+  }, [selectedCompany, data]);
+
+  const toggleCategory = (category) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
+  };
+
+  if (!data) {
+    return <div className="loading">Loading Shareholding Data...</div>;
+  }
+
+  const currentData = data.data[selectedCompany]?.[selectedQuarter];
+  
+  // Define exact order of categories as per UI design
+  const categoryOrder = [
+    "Promoters",
+    "Foreign Institutions",
+    "Domestic Institutions",
+    "Retail Individuals",
+    "Others",
+    "Government"
+  ];
+
+  let totalPercentage = 0;
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app-container">
+      <header>
+        <h1>Shareholding Pattern</h1>
+        <p className="subtitle">Definitive Source of Truth Mapping</p>
+      </header>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <div className="controls">
+        <div className="control-group">
+          <label>Company</label>
+          <select 
+            value={selectedCompany} 
+            onChange={e => setSelectedCompany(e.target.value)}
+          >
+            {data.companies.map(c => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <div className="control-group">
+          <label>Reporting Quarter</label>
+          <select 
+            value={selectedQuarter} 
+            onChange={e => setSelectedQuarter(e.target.value)}
+          >
+            {data.data[selectedCompany] && Object.keys(data.data[selectedCompany]).map(q => (
+              <option key={q} value={q}>{q}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div className="table-container">
+        {currentData ? (
+          <table className="shp-table">
+            <thead>
+              <tr>
+                <th>Category of Shareholder</th>
+                <th>Shareholding %</th>
+              </tr>
+            </thead>
+            <tbody>
+              {categoryOrder.map(category => {
+                const catData = currentData[category];
+                if (!catData) return null;
+                
+                totalPercentage += catData.percentage;
+                const isExpanded = expandedCategories[category];
+
+                return (
+                  <tr className="row-group" key={category}>
+                    <td colSpan="2" style={{ padding: 0 }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                        <tbody>
+                          <tr 
+                            className={`parent-row ${isExpanded ? 'expanded' : ''}`}
+                            onClick={() => toggleCategory(category)}
+                          >
+                            <td>
+                              <div className="category-cell">
+                                <span className={`expand-icon ${isExpanded ? 'open' : ''}`}>
+                                  <ChevronRight />
+                                </span>
+                                {category}
+                              </div>
+                            </td>
+                            <td>
+                              <div className="percentage-bar-container">
+                                <div 
+                                  className="percentage-bar" 
+                                  style={{ width: `${Math.min(100, catData.percentage)}%` }}
+                                ></div>
+                              </div>
+                              {catData.percentage.toFixed(2)}%
+                            </td>
+                          </tr>
+                          
+                          {isExpanded && catData.children && catData.children.length > 0 && (
+                            <tr className="child-rows-container">
+                              <td colSpan="2" style={{ padding: 0 }}>
+                                <div className="child-rows">
+                                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                    <tbody>
+                                      {catData.children.map((child, idx) => (
+                                        <tr className="child-row" key={idx}>
+                                          <td>{child.name}</td>
+                                          <td>{child.percentage.toFixed(2)}%</td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                );
+              })}
+              
+              <tr className="total-row">
+                <td>Total Validated Shareholding</td>
+                <td>{totalPercentage.toFixed(2)}%</td>
+              </tr>
+            </tbody>
+          </table>
+        ) : (
+          <div className="error-message">No data available for this selection.</div>
+        )}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;

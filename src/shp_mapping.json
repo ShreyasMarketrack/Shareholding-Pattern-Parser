@@ -1,0 +1,45 @@
+{
+  "Promoters": [
+    "IndividualsOrHinduUndividedFamilyMember",
+    "CentralGovernmentStateGovernmentMember",
+    "FinancialInstitutionsBanksMember",
+    "AnyOtherPromoterMember",
+    "ForeignPromoterMember",
+    "ShareholdingOfPromoterAndPromoterGroupMember"
+  ],
+  "Foreign Institutions": [
+    "InstitutionsForeignPortfolioInvestorCategoryOneMember",
+    "InstitutionsForeignPortfolioInvestorCategoryTwoMember",
+    "OtherInstitutionsForeignMember",
+    "ForeignPortfolioInvestorsMember",
+    "ForeignDirectInvestmentMember"
+  ],
+  "Domestic Institutions": [
+    "MutualFundsOrUTIMember",
+    "AlternativeInvestmentFundsMember",
+    "BanksMember",
+    "InsuranceCompaniesMember",
+    "ProvidentFundsOrPensionFundsMember",
+    "SovereignWealthFundsDomesticMember",
+    "NBFCsRegisteredWithRBIMember"
+  ],
+  "Retail Individuals": [
+    "ResidentIndividualShareholdersHoldingNominalShareCapitalUpToRsTwoLakhMember",
+    "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
+  ],
+  "Government": [
+    "GovernmentsMember"
+  ],
+  "Others": [
+    "NonResidentIndiansMember",
+    "ForeignNationalsMember",
+    "ForeignCompaniesMember",
+    "BodiesCorporateMember",
+    "OtherNonInstitutionsMember",
+    "EmployeeBenefitsTrustsMember",
+    "CustodianOrDRHolderMember",
+    "InvestorEducationAndProtectionFundMember",
+    "AnyOtherPublicMember",
+    "SharesHeldByNonPromoterNonPublicShareholdersMember"
+  ]
+}

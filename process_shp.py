@@ -230,8 +230,40 @@ def parse_processed(filepath):
     
     categories = {c["name"]: init_tree(c) for c in MAPPING_TREE["children"]}
     
+    
+    # Pre-process the data dictionary to map legacy/drifted NSE/BSE domains to modern schema domains
+    alias_map = {
+        'IndividualsOrHUFDomain': 'IndividualsOrHinduUndividedFamilyDomain',
+        'OthersIndianShareholdersDomain': 'OtherIndianShareholdersDomain',
+        'CentralGovernmentOrStateGovernmentsDomain': 'CentralGovernmentOrStateGovernmentSDomain',
+        'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOneDomain': 'InstitutionsForeignPortfolioInvestorCategoryOneDomain',
+        'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorTwoDomain': 'InstitutionsForeignPortfolioInvestorCategoryTwoDomain',
+        'DetailsOfSharesHeldByOtherInstitutionsForeignDomain': 'OtherInstitutionsForeignDomain',
+    }
+    
+    # Valid domains derived from the mapping tree
+    valid_domains = set()
+    def extract_domains(n):
+        if n.get("member"): valid_domains.add(n["member"].replace('Member', 'Domain'))
+        for c in n.get("children", []): extract_domains(c)
+    for child in MAPPING_TREE.get("children", []): extract_domains(child)
+        
+    normalized_data = {}
+    for k, v in data.items():
+        if not k.endswith('Domain'):
+            normalized_data[k] = v
+            continue
+            
+        mapped = alias_map.get(k, k)
+        stripped = mapped.replace('DetailsOfSharesHeldBy', '')
+        if mapped not in valid_domains and stripped in valid_domains:
+            mapped = stripped
+            
+        normalized_data[mapped] = v
+    data = normalized_data
+    
     # Processed JSON uses flat keys for aggregates (e.g. data['IndianMember'])
-    # and domain keys for specific entities (e.g. data['IndividualsOrHUFDomain'])
+    # and domain keys for specific entities (e.g. data['IndividualsOrHinduUndividedFamilyDomain'])
     
     def process_node(node):
         member = node.get("member")
@@ -243,22 +275,12 @@ def parse_processed(filepath):
                 try: node["explicit_shares"] = float(agg_data.get("NumberOfFullyPaidUpEquityShares", 0.0))
                 except ValueError: pass
                 
-        # Find matching domain for entities (heuristically by replacing Member with Domain)
+        # Find matching domain for entities
         if member:
             domain_name = member.replace('Member', 'Domain')
-            domain_candidates = [
-                domain_name,
-                domain_name.replace('IndividualsOrHinduUndividedFamily', 'IndividualsOrHUF'),
-                domain_name.replace('Other', 'Others'),
-                domain_name.replace('InstitutionsForeignPortfolioInvestorCategoryOne', 'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOne'),
-                domain_name.replace('InstitutionsForeignPortfolioInvestorCategoryTwo', 'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorTwo'),
-                domain_name.replace('OtherInstitutionsForeign', 'DetailsOfSharesHeldByOtherInstitutionsForeign')
-            ]
             
-            matched_domain = next((d for d in domain_candidates if d in data), None)
-            
-            if matched_domain:
-                entities_dict = data[matched_domain]
+            if domain_name in data:
+                entities_dict = data[domain_name]
                 for entity_data in entities_dict.values():
                     try: pct = float(entity_data.get("ShareholdingAsAPercentageOfTotalNumberOfShares", 0.0))
                     except ValueError: pct = 0.0

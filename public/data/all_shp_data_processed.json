@@ -1938,7 +1938,14 @@
                     "explicit_shares": 6103622781.0,
                     "percentage": 96.5,
                     "shares": 6103622781.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "President of India",
+                        "shares": 6103622781.0,
+                        "percentage": 96.5,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -2483,7 +2490,14 @@
                     "explicit_shares": 6103622781.0,
                     "percentage": 96.5,
                     "shares": 6103622781.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "President of India",
+                        "shares": 6103622781.0,
+                        "percentage": 96.5,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -3670,7 +3684,14 @@
                     "explicit_shares": 123722816.0,
                     "percentage": 3.16,
                     "shares": 123722816.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PTC CABLES PRIVATE LIMITED",
+                        "shares": 74639083.0,
+                        "percentage": 1.91,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -4437,7 +4458,14 @@
                     "explicit_shares": 126071650.0,
                     "percentage": 3.22,
                     "shares": 126071650.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PTC CABLES PRIVATE LIMITED",
+                        "shares": 74639083.0,
+                        "percentage": 1.91,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -10697,7 +10725,44 @@
                     "explicit_shares": 247476720.0,
                     "percentage": 27.88,
                     "shares": 247476720.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "Tamilnadu Industrial Development Corporation Ltd",
+                        "shares": 247476720.0,
+                        "percentage": 27.88,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Chennai Aerospace Park Limited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamil Nadu Centre of Excellence for Advanced Manufacturing\n(Section 8 Company)",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Smart and Advanced Manufacturing Centre(Section 8\nCompany)",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Advance Manufacturing Centre of Excellence Private Limited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Engineering and Innovation Centre\nLimited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -13207,7 +13272,20 @@
                 "explicit_shares": 54224048.0,
                 "percentage": 6.11,
                 "shares": 54224048.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Rekha Jhunjhunwala",
+                    "shares": 37752895.0,
+                    "percentage": 4.25,
+                    "member_type": "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
+                  },
+                  {
+                    "name": "Rekha Jhunjhunwala",
+                    "shares": 9540575.0,
+                    "percentage": 1.0699999999999998,
+                    "member_type": "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
+                  }
+                ]
               }
             ]
           },
@@ -13443,7 +13521,44 @@
                     "explicit_shares": 247476720.0,
                     "percentage": 27.88,
                     "shares": 247476720.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "Tamilnadu Industrial Development Corporation Ltd",
+                        "shares": 247476720.0,
+                        "percentage": 27.88,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Chennai Aerospace Park Limited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamil Nadu Centre of Excellence for Advanced Manufacturing\n(Section 8 Company)",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Smart and Advanced Manufacturing Centre(Section 8\nCompany)",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Advance Manufacturing Centre of Excellence Private Limited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "Tamilnadu Engineering and Innovation Centre\nLimited",
+                        "shares": 0.0,
+                        "percentage": 0.0,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -15971,7 +16086,20 @@
                 "explicit_shares": 54220855.0,
                 "percentage": 6.11,
                 "shares": 54220855.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Rekha Jhunjhunwala",
+                    "shares": 36252895.0,
+                    "percentage": 4.08,
+                    "member_type": "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
+                  },
+                  {
+                    "name": "Rekha Jhunjhunwala",
+                    "shares": 9540575.0,
+                    "percentage": 1.07,
+                    "member_type": "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
+                  }
+                ]
               }
             ]
           },
@@ -18049,7 +18177,14 @@
                 "explicit_shares": 2194408.0,
                 "percentage": 0.11,
                 "shares": 2194408.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "QUALIFIED INSTITUTIONAL BUYER",
+                    "shares": 2194408.0,
+                    "percentage": 0.11,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  }
+                ]
               }
             ]
           },
@@ -18890,7 +19025,14 @@
                 "explicit_shares": 2194408.0,
                 "percentage": 0.11,
                 "shares": 2194408.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "QUALIFIED INSTITUTIONAL BUYER",
+                    "shares": 2194408.0,
+                    "percentage": 0.11,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  }
+                ]
               }
             ]
           },
@@ -19058,7 +19200,14 @@
                     "explicit_shares": 18112277.0,
                     "percentage": 0.91,
                     "shares": 18112277.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "CALADIUM INVESTMENT PTE LTD",
+                        "shares": 18112277.0,
+                        "percentage": 0.91,
+                        "member_type": "ForeignCompaniesMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Bodies Corporate",
@@ -24719,7 +24868,14 @@
                     "explicit_shares": 49202639.0,
                     "percentage": 2.0500000000000003,
                     "shares": 49202639.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "Lakshdeep Investments & Finance (P) Ltd.",
+                        "shares": 24418497.0,
+                        "percentage": 1.02,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -25414,7 +25570,14 @@
                     "explicit_shares": 49640590.0,
                     "percentage": 2.07,
                     "shares": 49640590.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "Lakshdeep Investments & Finance (P) Ltd.",
+                        "shares": 24418497.0,
+                        "percentage": 1.02,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -27397,7 +27560,20 @@
                     "explicit_shares": 4774884280.0,
                     "percentage": 51.34,
                     "shares": 4774884280.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 4594849080.0,
+                        "percentage": 49.4,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 180035200.0,
+                        "percentage": 1.94,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -28001,7 +28177,20 @@
                     "explicit_shares": 4774884280.0,
                     "percentage": 51.339999999999996,
                     "shares": 4774884280.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 4594849080.0,
+                        "percentage": 49.4,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      },
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 180035200.0,
+                        "percentage": 1.94,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -28692,7 +28881,7 @@
             "member": "InstitutionsForeignMember",
             "explicit_percentage": 37.98,
             "explicit_shares": 4752793821.0,
-            "percentage": 37.980000000000004,
+            "percentage": 37.99,
             "shares": 4752793821.0,
             "entities": [],
             "children": [
@@ -28701,9 +28890,28 @@
                 "member": "ForeignDirectInvestmentMember",
                 "explicit_percentage": 22.93,
                 "explicit_shares": 2869762693.0,
-                "percentage": 22.93,
+                "percentage": 22.939999999999998,
                 "shares": 2869762693.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Tobacco Manufacturers (India) Limited",
+                    "shares": 2228495863.0,
+                    "percentage": 17.81,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  },
+                  {
+                    "name": "Myddleton Investment Company Limited",
+                    "shares": 486311940.0,
+                    "percentage": 3.89,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  },
+                  {
+                    "name": "Rothmans International Enterprises Limited",
+                    "shares": 154954890.0,
+                    "percentage": 1.24,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Venture Capital Investors",
@@ -28941,7 +29149,14 @@
                 "explicit_shares": 975419467.0,
                 "percentage": 7.79,
                 "shares": 975419467.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Specified Undertaking of the Unit Trust of India",
+                    "shares": 974531427.0,
+                    "percentage": 7.79,
+                    "member_type": "OtherFinancialInstitutionsMember"
+                  }
+                ]
               },
               {
                 "name": "Any Other (specify)",
@@ -28950,7 +29165,20 @@
                 "explicit_shares": 362936557.0,
                 "percentage": 2.9,
                 "shares": 362936557.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "QIB - Insurance Company Registered",
+                    "shares": 348045816.0,
+                    "percentage": 2.78,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  },
+                  {
+                    "name": "Insurance Funds - Dept of Post India",
+                    "shares": 14890741.0,
+                    "percentage": 0.12,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  }
+                ]
               }
             ]
           },
@@ -29331,7 +29559,26 @@
                 "explicit_shares": 2869762693.0,
                 "percentage": 22.91,
                 "shares": 2869762693.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Tobacco Manufacturers (India) Limited",
+                    "shares": 2228495863.0,
+                    "percentage": 17.79,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  },
+                  {
+                    "name": "Myddleton Investment Company Limited",
+                    "shares": 486311940.0,
+                    "percentage": 3.88,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  },
+                  {
+                    "name": "Rothmans International Enterprises Limited",
+                    "shares": 154954890.0,
+                    "percentage": 1.24,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Venture Capital Investors",
@@ -29569,7 +29816,14 @@
                 "explicit_shares": 975319467.0,
                 "percentage": 7.79,
                 "shares": 975319467.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Specified Undertaking of the Unit Trust of India",
+                    "shares": 974531427.0,
+                    "percentage": 7.779999999999999,
+                    "member_type": "OtherFinancialInstitutionsMember"
+                  }
+                ]
               },
               {
                 "name": "Any Other (specify)",
@@ -29578,7 +29832,20 @@
                 "explicit_shares": 354795399.0,
                 "percentage": 2.83,
                 "shares": 354795399.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "QIB - Insurance Company Registered",
+                    "shares": 339904658.0,
+                    "percentage": 2.71,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  },
+                  {
+                    "name": "Insurance Funds - Dept of Post India",
+                    "shares": 14890741.0,
+                    "percentage": 0.12,
+                    "member_type": "OtherInstitutionsDomesticMember"
+                  }
+                ]
               }
             ]
           },
@@ -29865,7 +30132,14 @@
                     "explicit_shares": 5079775288.0,
                     "percentage": 57.42,
                     "shares": 5079775288.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 5079775288.0,
+                        "percentage": 57.42,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -30468,7 +30742,14 @@
                     "explicit_shares": 5079775288.0,
                     "percentage": 55.50000000000001,
                     "shares": 5079775288.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 5079775288.0,
+                        "percentage": 55.50000000000001,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -31084,7 +31365,14 @@
                     "explicit_shares": 5079775288.0,
                     "percentage": 55.5,
                     "shares": 5079775288.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 5079775288.0,
+                        "percentage": 55.5,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -34553,7 +34841,14 @@
                     "explicit_shares": 7408867093.0,
                     "percentage": 58.89,
                     "shares": 7408867093.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 7408867093.0,
+                        "percentage": 58.89,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -34877,7 +35172,20 @@
                 "explicit_shares": 1295308455.0,
                 "percentage": 10.3,
                 "shares": 1295308455.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "INDIAN OIL CORPORATION LIMITED",
+                    "shares": 986885142.0,
+                    "percentage": 7.84,
+                    "member_type": "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
+                  },
+                  {
+                    "name": "GAIL (INDIA) LIMITED",
+                    "shares": 308401602.0,
+                    "percentage": 2.45,
+                    "member_type": "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
+                  }
+                ]
               }
             ]
           },
@@ -35148,7 +35456,14 @@
                     "explicit_shares": 7408867093.0,
                     "percentage": 58.89,
                     "shares": 7408867093.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 7408867093.0,
+                        "percentage": 58.89,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -35472,7 +35787,20 @@
                 "explicit_shares": 1295308428.0,
                 "percentage": 10.299999999999999,
                 "shares": 1295308428.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "INDIAN OIL CORPORATION LIMITED",
+                    "shares": 986885142.0,
+                    "percentage": 7.84,
+                    "member_type": "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
+                  },
+                  {
+                    "name": "GAIL (INDIA) LIMITED",
+                    "shares": 308401602.0,
+                    "percentage": 2.45,
+                    "member_type": "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
+                  }
+                ]
               }
             ]
           },
@@ -35745,7 +36073,14 @@
                     "explicit_shares": 4955346251.0,
                     "percentage": 51.1,
                     "shares": 4955346251.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "President Of India",
+                        "shares": 4955346251.0,
+                        "percentage": 51.1,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -36348,7 +36683,14 @@
                     "explicit_shares": 4955346251.0,
                     "percentage": 51.1,
                     "shares": 4955346251.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "President Of India",
+                        "shares": 4955346251.0,
+                        "percentage": 51.1,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -41191,7 +41533,14 @@
                     "explicit_shares": 3890735938.0,
                     "percentage": 63.129999999999995,
                     "shares": 3890735938.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "THE PRESIDENT OF INDIA ACTING THROUGH MINISTRY OF COAL",
+                        "shares": 3890735938.0,
+                        "percentage": 63.129999999999995,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -41774,7 +42123,14 @@
                     "explicit_shares": 3890735938.0,
                     "percentage": 63.13,
                     "shares": 3890735938.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "THE PRESIDENT OF INDIA ACTING THROUGH MINISTRY OF COAL",
+                        "shares": 3890735938.0,
+                        "percentage": 63.13,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -42449,7 +42805,14 @@
                     "explicit_shares": 9079520.0,
                     "percentage": 0.37,
                     "shares": 9079520.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "KARNATAKA STATE INDUSTRIAL AND INFRASTRUCTURE DEVE",
+                        "shares": 9079520.0,
+                        "percentage": 0.37,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -42710,7 +43073,14 @@
                 "explicit_shares": 366818095.0,
                 "percentage": 15.0,
                 "shares": 366818095.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "JFE STEEL INTERNATIONAL EUROPE B.V.",
+                    "shares": 366818095.0,
+                    "percentage": 15.0,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Venture Capital Investors",
@@ -43091,7 +43461,26 @@
                     "explicit_shares": 187559038.0,
                     "percentage": 7.67,
                     "shares": 187559038.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "GAGANDEEP CREDIT CAPITAL PVT LTD",
+                        "shares": 49550000.0,
+                        "percentage": 2.03,
+                        "member_type": "BodiesCorporateMember"
+                      },
+                      {
+                        "name": "ENAM SECURITIES PVT LTD",
+                        "shares": 27985121.0,
+                        "percentage": 1.14,
+                        "member_type": "BodiesCorporateMember"
+                      },
+                      {
+                        "name": "SHAMYAK INVESTMENT PRIVATE LIMITED",
+                        "shares": 26533230.0,
+                        "percentage": 1.09,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -43332,7 +43721,14 @@
                     "explicit_shares": 9079520.0,
                     "percentage": 0.37,
                     "shares": 9079520.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "KARNATAKA STATE INDUSTRIAL AND INFRASTRUCTURE DEVELOPMENT CORPORATION LIMITED",
+                        "shares": 9079520.0,
+                        "percentage": 0.37,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -43611,7 +44007,14 @@
                 "explicit_shares": 366818095.0,
                 "percentage": 15.0,
                 "shares": 366818095.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "JFE STEEL INTERNATIONAL EUROPE B.V.",
+                    "shares": 366818095.0,
+                    "percentage": 15.0,
+                    "member_type": "ForeignDirectInvestmentMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Venture Capital Investors",
@@ -43992,7 +44395,26 @@
                     "explicit_shares": 187365370.0,
                     "percentage": 7.66,
                     "shares": 187365370.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "GAGANDEEP CREDIT CAPITAL PVT LTD",
+                        "shares": 49550000.0,
+                        "percentage": 2.03,
+                        "member_type": "BodiesCorporateMember"
+                      },
+                      {
+                        "name": "ENAM SECURITIES PVT LTD",
+                        "shares": 27985121.0,
+                        "percentage": 1.1400000000000001,
+                        "member_type": "BodiesCorporateMember"
+                      },
+                      {
+                        "name": "SHAMYAK INVESTMENT PRIVATE LIMITED",
+                        "shares": 26533230.0,
+                        "percentage": 1.09,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -49644,7 +50066,14 @@
                     "explicit_shares": 78987400.0,
                     "percentage": 4.94,
                     "shares": 78987400.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "Yamuna Trust (Niraj Bajaj)",
+                        "shares": 18299580.0,
+                        "percentage": 1.15,
+                        "member_type": "TrustsWhereAnyPersonBelongingToPromoterAndPromoterGroupIsTrusteeOrBeneficiaryOrAuthorOfTrustMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Investor Education and Protection Fund",
@@ -49689,7 +50118,14 @@
                     "explicit_shares": 84893756.0,
                     "percentage": 5.31,
                     "shares": 84893756.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "JAYA HIND INDUSTRIES PRIVATE LIMITED",
+                        "shares": 62592950.0,
+                        "percentage": 3.92,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -50759,7 +51195,14 @@
                     "explicit_shares": 78987400.0,
                     "percentage": 4.9399999999999995,
                     "shares": 78987400.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "NIRAJ BAJAJ (Yamuna Trust)",
+                        "shares": 18299580.0,
+                        "percentage": 1.15,
+                        "member_type": "TrustsWhereAnyPersonBelongingToPromoterAndPromoterGroupIsTrusteeOrBeneficiaryOrAuthorOfTrustMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Investor Education and Protection Fund",
@@ -50804,7 +51247,14 @@
                     "explicit_shares": 85171274.0,
                     "percentage": 5.33,
                     "shares": 85171274.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "JAYA HIND INDUSTRIES PRIVATE LIMITED",
+                        "shares": 62742450.0,
+                        "percentage": 3.93,
+                        "member_type": "BodiesCorporateMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Any Other (specify)",
@@ -51577,7 +52027,14 @@
                 "explicit_shares": 150495428.0,
                 "percentage": 2.42,
                 "shares": 150495428.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "GOVERNMENT OF SINGAPORE",
+                    "shares": 150495428.0,
+                    "percentage": 2.42,
+                    "member_type": "SovereignWealthFundsForeignMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Portfolio Investors Category I",
@@ -52781,7 +53238,14 @@
                 "explicit_shares": 155410465.0,
                 "percentage": 2.5,
                 "shares": 155410465.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "GOVERNMENT OF SINGAPORE - E",
+                    "shares": 155410465.0,
+                    "percentage": 2.5,
+                    "member_type": "SovereignWealthFundsForeignMember"
+                  }
+                ]
               },
               {
                 "name": "Foreign Portfolio Investors Category I",
@@ -53265,7 +53729,14 @@
                     "explicit_shares": 3737921934.0,
                     "percentage": 51.14,
                     "shares": 3737921934.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 3737921934.0,
+                        "percentage": 51.14,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -53843,7 +54314,14 @@
                     "explicit_shares": 3737921934.0,
                     "percentage": 51.13999999999999,
                     "shares": 3737921934.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "PRESIDENT OF INDIA",
+                        "shares": 3737921934.0,
+                        "percentage": 51.13999999999999,
+                        "member_type": "CentralGovernmentOrStateGovernmentSMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Financial Institutions/ Banks",
@@ -54970,7 +55448,14 @@
                     "explicit_shares": 895003885.0,
                     "percentage": 4.64,
                     "shares": 895003885.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "OPAL INVESTMENT PVT LTD",
+                        "shares": 895003885.0,
+                        "percentage": 4.64,
+                        "member_type": "ForeignCompaniesMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Bodies Corporate",
@@ -55616,7 +56101,14 @@
                     "explicit_shares": 180822287.0,
                     "percentage": 4.6899999999999995,
                     "shares": 180822287.0,
-                    "entities": []
+                    "entities": [
+                      {
+                        "name": "OPAL INVESTMENT PVT LTD",
+                        "shares": 180822287.0,
+                        "percentage": 4.6899999999999995,
+                        "member_type": "ForeignCompaniesMember"
+                      }
+                    ]
                   },
                   {
                     "name": "Bodies Corporate",

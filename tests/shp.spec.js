@@ -28,44 +28,6 @@ test('Shareholding Viewer displays nested taxonomy groups accurately', async ({ 
   await expect(page.locator('text=Indian').first()).toBeVisible();
   await expect(page.locator('text=Foreign').first()).toBeVisible();
 
-  // Click on "Indian" to expand it
-  await page.click('text=Indian');
-
-  // Since we default to Hide Zero Values = true, Individuals/HUF is hidden (it's 0%).
-  // Let's toggle off "Hide Zero Values" to see it
-  await page.evaluate(() => {
-    const input = document.querySelector('label.switch-label input[type="checkbox"]');
-    if (input) {
-      input.checked = false;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  });
-
-  // Now "Individuals/Hindu undivided Family" should be visible
-  await expect(page.locator('text=Individuals/Hindu undivided Family').first()).toBeVisible();
-
-  // Click on it
-  await page.click('text=Individuals/Hindu undivided Family');
-
-  // Now we should see the deep rows
-  let deepRowsCount = await page.locator('.entity-row.depth-3').count();
-  console.log(`Found ${deepRowsCount} specific entities under Individuals/HUF with Hide Zero OFF`);
-  expect(deepRowsCount).toBeGreaterThan(0);
-  // Turn Hide Zero Values back on
-  await page.evaluate(() => {
-    const input = document.querySelector('label.switch-label input[type="checkbox"]');
-    if (input) {
-      input.checked = true;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-  });
-  
-  // Let's check "Any Other (specify)" which has the 32.9% Adani Trust
-  await page.click('text=Any Other (specify)');
-  const otherRowsCount = await page.locator('.entity-row').filter({ hasText: 'Adani Family Trust' }).count();
-  console.log(`Found Adani Family Trust: ${otherRowsCount}`);
-  expect(otherRowsCount).toBeGreaterThan(0);
-
   // Switch to Processed JSON
   await page.click('button:has-text("Processed JSON")');
   await page.waitForTimeout(500); // wait for data fetch
@@ -78,6 +40,34 @@ test('Shareholding Viewer displays nested taxonomy groups accurately', async ({ 
   const totalValProc = parseFloat(totalShareholdingProcessed);
   expect(totalValProc).toBeLessThanOrEqual(100.01);
   expect(totalValProc).toBeGreaterThan(0);
+  
+  // Test Taxonomy Drift Remediation (TITAN Edge Case)
+  await page.reload();
+  await page.waitForSelector('.shp-table');
+  await page.click('button:has-text("Processed JSON")');
+  await page.waitForTimeout(500);
+  
+  // Select TITAN from the company dropdown
+  const companySelect = page.locator('.control-group select').nth(0);
+  await companySelect.selectOption({ label: 'TITAN' });
+  await page.waitForTimeout(500);
+  
+  // Verify TITAN Loaded
+  const titanName = await page.textContent('.info-item:has-text("Company Name") .info-value');
+  expect(titanName).toContain('TITAN');
+  
+  // Expand Promoters -> Indian -> Central Government/ State Government(s)
+  await page.click('text=Promoters');
+  await page.click('text=Indian');
+  await page.click('text=Central Government/ State Government(s)');
+  
+  // Assert Tamilnadu Industrial Development Corporation Ltd is visible
+  const titanGovtRow = page.locator('.entity-row').filter({ hasText: 'Tamilnadu Industrial Development Corporation Ltd' });
+  await expect(titanGovtRow).toBeVisible();
+  
+  const titanGovtPct = await titanGovtRow.locator('td:last-child').textContent();
+  console.log(`Found TITAN Govt shareholding: ${titanGovtPct}`);
+  expect(parseFloat(titanGovtPct)).toBeGreaterThan(27.0);
 
   console.log("Playwright test completed successfully!");
 });

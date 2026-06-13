@@ -90,16 +90,23 @@ function App() {
       .then(json => {
         setData(json);
         if (json.companies && json.companies.length > 0) {
-          const firstCompany = json.companies[0];
-          setSelectedCompany(firstCompany);
+          // Only reset if the current selection is invalid
+          let newComp = selectedCompany;
+          if (!newComp || !json.companies.includes(newComp)) {
+            newComp = json.companies[0];
+            setSelectedCompany(newComp);
+          }
           
-          const quarters = Object.keys(json.data[firstCompany]);
-          if (quarters.length > 0) {
-            setSelectedQuarter(quarters[0]);
+          if (json.data[newComp]) {
+            const quarters = Object.keys(json.data[newComp]);
+            if (quarters.length > 0 && (!selectedQuarter || !quarters.includes(selectedQuarter))) {
+              setSelectedQuarter(quarters[0]);
+            }
           }
         }
       })
       .catch(err => console.error(`Failed to load ${dataSource} data`, err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataSource]);
 
   useEffect(() => {

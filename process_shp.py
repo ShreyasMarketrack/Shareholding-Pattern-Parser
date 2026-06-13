@@ -205,6 +205,15 @@ def parse_raw(filepath):
                 non_inst["shares"] -= retail_cat["shares"]
                 others_cat["percentage"] = sum(c["percentage"] for c in others_cat["children"])
                 others_cat["shares"] = sum(c["shares"] for c in others_cat["children"])
+                
+    total_percentage = sum(c["percentage"] for c in categories.values())
+    if 0 < total_percentage <= 1.02:
+        def scale_node(n):
+            n["percentage"] *= 100
+            n["explicit_percentage"] = n.get("explicit_percentage", 0) * 100
+            for e in n.get("entities", []): e["percentage"] *= 100
+            for child in n.get("children", []): scale_node(child)
+        for cat in categories.values(): scale_node(cat)
         
     return {"general_info": gen_info, "categories": list(categories.values())}
 
@@ -282,6 +291,15 @@ def parse_processed(filepath):
                 non_inst["shares"] -= retail_cat["shares"]
                 others_cat["percentage"] = sum(c["percentage"] for c in others_cat["children"])
                 others_cat["shares"] = sum(c["shares"] for c in others_cat["children"])
+                
+    total_percentage = sum(c["percentage"] for c in categories.values())
+    if 0 < total_percentage <= 1.02:
+        def scale_node(n):
+            n["percentage"] *= 100
+            n["explicit_percentage"] = n.get("explicit_percentage", 0) * 100
+            for e in n.get("entities", []): e["percentage"] *= 100
+            for child in n.get("children", []): scale_node(child)
+        for cat in categories.values(): scale_node(cat)
                 
     return {"general_info": gen_info, "categories": list(categories.values())}
 

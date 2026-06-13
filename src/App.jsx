@@ -189,13 +189,14 @@ function App() {
         </div>
         
         <div className="control-group filter-group">
-          <label className="checkbox-label">
+          <label className="switch-label">
+            <span>Hide Zero Values</span>
             <input 
               type="checkbox" 
               checked={hideZeroValues} 
               onChange={e => setHideZeroValues(e.target.checked)} 
             />
-            Hide Zero Values
+            <span className="slider"></span>
           </label>
         </div>
       </div>

@@ -12,116 +12,142 @@
 # Error details
 
 ```
-Error: expect(locator).toBeVisible() failed
-
-Locator: locator('text=Individuals/Hindu undivided Family').first()
-Expected: visible
-Timeout: 5000ms
-Error: element(s) not found
-
+Error: locator.uncheck: Element is outside of the viewport
 Call log:
-  - Expect "toBeVisible" with timeout 5000ms
-  - waiting for locator('text=Individuals/Hindu undivided Family').first()
+  - waiting for locator('label.switch-label input[type="checkbox"]')
+    - locator resolved to <input checked type="checkbox"/>
+  - attempting click action
+    - scrolling into view if needed
+    - done scrolling
 
 ```
 
+# Page snapshot
+
 ```yaml
-- banner:
-  - heading "Shareholding Pattern Viewer" [level=1]
-  - paragraph: Recursive Taxonomy Implementation
-- text: Data Source
-- button "Raw XBRL JSON"
-- button "Processed JSON"
-- text: Company
-- combobox:
-  - option "ADANIPORTS" [selected]
-  - option "ADANIPOWER"
-  - option "AXISBANK"
-  - option "BAJAJFINSV"
-  - option "BAJFINANCE"
-  - option "BEL"
-  - option "BHARTIARTL"
-  - option "COALINDIA"
-  - option "HCLTECH"
-  - option "HDFCBANK"
-  - option "HINDUNILVR"
-  - option "ICICIBANK"
-  - option "INFY"
-  - option "ITC"
-  - option "JSWSTEEL"
-  - option "KOTAKBANK"
-  - option "LICI"
-  - option "LT"
-  - option "M&M"
-  - option "MARUTI"
-  - option "NTPC"
-  - option "ONGC"
-  - option "POWERGRID"
-  - option "RELIANCE"
-  - option "SBIN"
-  - option "SUNPHARMA"
-  - option "TCS"
-  - option "TITAN"
-  - option "ULTRACEMCO"
-  - option "VEDL"
-- text: Reporting Quarter
-- combobox:
-  - option "201238" [selected]
-  - option "201950"
-  - option "204693"
-- checkbox "Hide Zero Values"
-- text: "Hide Zero Values Company Name: ADANI PORTS AND SPECIAL ECONOMIC ZONE LIMITED Scrip Code / Symbol: 532921 / ADANIPORTS Date of Report: 2025-06-30"
-- heading "Disclosures & Notes" [level=4]
-- paragraph: In SBO, as there is option to mention PAN of only one SBO, hence we have mentioned dummy PAN ZZZZZ9999Z. Further, in case of nationality, we have mention Indian/ Cypriot as nationality of (i) Gautambhai Shantilal Adani and Rajeshbhai Shantilal Adani is Indian, and (ii) nationality of Vinodbhai Shantilal Adani is Cypriot.
-- table:
-  - rowgroup:
-    - row "Category of Shareholder Shareholding %":
-      - columnheader "Category of Shareholder"
-      - columnheader "Shareholding %"
-  - rowgroup:
-    - row "Promoters 65.89%":
-      - cell "Promoters":
-        - img
-        - text: Promoters
-      - cell "65.89%"
-    - row "Indian 42.65%":
-      - cell "Indian":
-        - img
-        - text: Indian
-      - cell "42.65%"
-    - row "Foreign 23.24%":
-      - cell "Foreign":
-        - img
-        - text: Foreign
-      - cell "23.24%"
-    - row "FII 13.53%":
-      - cell "FII":
-        - img
-        - text: FII
-      - cell "13.53%"
-    - row "DII 15.15%":
-      - cell "DII":
-        - img
-        - text: DII
-      - cell "15.15%"
-    - row "Govt 0.00%":
-      - cell "Govt":
-        - img
-        - text: Govt
-      - cell "0.00%"
-    - row "Retail Public 4.38%":
-      - cell "Retail Public":
-        - img
-        - text: Retail Public
-      - cell "4.38%"
-    - row "Others 1.06%":
-      - cell "Others":
-        - img
-        - text: Others
-      - cell "1.06%"
-    - row "Total Validated Shareholding 100.01%":
-      - cell "Total Validated Shareholding"
-      - cell "100.01%"
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - heading "Shareholding Pattern Viewer" [level=1] [ref=e5]
+    - paragraph [ref=e6]: Recursive Taxonomy Implementation
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: Data Source
+      - generic [ref=e10]:
+        - button "Raw XBRL JSON" [ref=e11] [cursor=pointer]
+        - button "Processed JSON" [ref=e12] [cursor=pointer]
+    - generic [ref=e13]:
+      - generic [ref=e14]: Company
+      - combobox [ref=e15] [cursor=pointer]:
+        - option "ADANIPORTS" [selected]
+        - option "ADANIPOWER"
+        - option "AXISBANK"
+        - option "BAJAJFINSV"
+        - option "BAJFINANCE"
+        - option "BEL"
+        - option "BHARTIARTL"
+        - option "COALINDIA"
+        - option "HCLTECH"
+        - option "HDFCBANK"
+        - option "HINDUNILVR"
+        - option "ICICIBANK"
+        - option "INFY"
+        - option "ITC"
+        - option "JSWSTEEL"
+        - option "KOTAKBANK"
+        - option "LICI"
+        - option "LT"
+        - option "M&M"
+        - option "MARUTI"
+        - option "NTPC"
+        - option "ONGC"
+        - option "POWERGRID"
+        - option "RELIANCE"
+        - option "SBIN"
+        - option "SUNPHARMA"
+        - option "TCS"
+        - option "TITAN"
+        - option "ULTRACEMCO"
+        - option "VEDL"
+    - generic [ref=e16]:
+      - generic [ref=e17]: Reporting Quarter
+      - combobox [ref=e18] [cursor=pointer]:
+        - option "201238" [selected]
+        - option "201950"
+        - option "204693"
+    - generic [ref=e20] [cursor=pointer]:
+      - generic [ref=e21]: Hide Zero Values
+      - checkbox "Hide Zero Values" [checked]
+  - generic [ref=e23]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]: "Company Name:"
+        - generic [ref=e27]: ADANI PORTS AND SPECIAL ECONOMIC ZONE LIMITED
+      - generic [ref=e28]:
+        - generic [ref=e29]: "Scrip Code / Symbol:"
+        - generic [ref=e30]: 532921 / ADANIPORTS
+      - generic [ref=e31]:
+        - generic [ref=e32]: "Date of Report:"
+        - generic [ref=e33]: 2025-06-30
+    - generic [ref=e34]:
+      - heading "Disclosures & Notes" [level=4] [ref=e35]
+      - paragraph [ref=e36]: In SBO, as there is option to mention PAN of only one SBO, hence we have mentioned dummy PAN ZZZZZ9999Z. Further, in case of nationality, we have mention Indian/ Cypriot as nationality of (i) Gautambhai Shantilal Adani and Rajeshbhai Shantilal Adani is Indian, and (ii) nationality of Vinodbhai Shantilal Adani is Cypriot.
+  - table [ref=e38]:
+    - rowgroup [ref=e39]:
+      - row "Category of Shareholder Shareholding %" [ref=e40]:
+        - columnheader "Category of Shareholder" [ref=e41]
+        - columnheader "Shareholding %" [ref=e42]
+    - rowgroup [ref=e43]:
+      - row "Promoters 65.89%" [ref=e44] [cursor=pointer]:
+        - cell "Promoters" [ref=e45]:
+          - generic [ref=e46]:
+            - img [ref=e48]
+            - generic [ref=e50]: Promoters
+        - cell "65.89%" [ref=e51]: 65.89%
+      - row "Indian 42.65%" [ref=e54] [cursor=pointer]:
+        - cell "Indian" [ref=e55]:
+          - generic [ref=e56]:
+            - img [ref=e58]
+            - generic [ref=e60]: Indian
+        - cell "42.65%" [ref=e61]: 42.65%
+      - row "Foreign 23.24%" [ref=e64] [cursor=pointer]:
+        - cell "Foreign" [ref=e65]:
+          - generic [ref=e66]:
+            - img [ref=e68]
+            - generic [ref=e70]: Foreign
+        - cell "23.24%" [ref=e71]: 23.24%
+      - row "FII 13.53%" [ref=e74] [cursor=pointer]:
+        - cell "FII" [ref=e75]:
+          - generic [ref=e76]:
+            - img [ref=e78]
+            - generic [ref=e80]: FII
+        - cell "13.53%" [ref=e81]: 13.53%
+      - row "DII 15.15%" [ref=e84] [cursor=pointer]:
+        - cell "DII" [ref=e85]:
+          - generic [ref=e86]:
+            - img [ref=e88]
+            - generic [ref=e90]: DII
+        - cell "15.15%" [ref=e91]: 15.15%
+      - row "Govt 0.00%" [ref=e94] [cursor=pointer]:
+        - cell "Govt" [ref=e95]:
+          - generic [ref=e96]:
+            - img [ref=e98]
+            - generic [ref=e100]: Govt
+        - cell "0.00%" [ref=e101]: 0.00%
+      - row "Retail Public 4.38%" [ref=e103] [cursor=pointer]:
+        - cell "Retail Public" [ref=e104]:
+          - generic [ref=e105]:
+            - img [ref=e107]
+            - generic [ref=e109]: Retail Public
+        - cell "4.38%" [ref=e110]: 4.38%
+      - row "Others 1.06%" [ref=e113] [cursor=pointer]:
+        - cell "Others" [ref=e114]:
+          - generic [ref=e115]:
+            - img [ref=e117]
+            - generic [ref=e119]: Others
+        - cell "1.06%" [ref=e120]: 1.06%
+      - row "Total Validated Shareholding 100.01%" [ref=e123]:
+        - cell "Total Validated Shareholding" [ref=e124]
+        - cell "100.01%" [ref=e125]
 ```
 
 # Test source
@@ -162,12 +188,12 @@ Call log:
   33 | 
   34 |   // Since we default to Hide Zero Values = true, Individuals/HUF is hidden (it's 0%).
   35 |   // Let's toggle off "Hide Zero Values" to see it
-  36 |   const hideZeroCheckbox = page.locator('label.checkbox-label input[type="checkbox"]');
-  37 |   await hideZeroCheckbox.uncheck();
+  36 |   const hideZeroCheckbox = page.locator('label.switch-label input[type="checkbox"]');
+> 37 |   await hideZeroCheckbox.uncheck({ force: true });
+     |                          ^ Error: locator.uncheck: Element is outside of the viewport
   38 | 
   39 |   // Now "Individuals/Hindu undivided Family" should be visible
-> 40 |   await expect(page.locator('text=Individuals/Hindu undivided Family').first()).toBeVisible();
-     |                                                                                 ^ Error: expect(locator).toBeVisible() failed
+  40 |   await expect(page.locator('text=Individuals/Hindu undivided Family').first()).toBeVisible();
   41 | 
   42 |   // Click on it
   43 |   await page.click('text=Individuals/Hindu undivided Family');
@@ -178,7 +204,7 @@ Call log:
   48 |   expect(deepRowsCount).toBeGreaterThan(0);
   49 |   
   50 |   // Turn Hide Zero Values back on
-  51 |   await hideZeroCheckbox.check();
+  51 |   await hideZeroCheckbox.check({ force: true });
   52 |   
   53 |   // Let's check "Any Other (specify)" which has the 32.9% Adani Trust
   54 |   await page.click('text=Any Other (specify)');

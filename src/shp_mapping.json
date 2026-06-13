@@ -1,45 +1,67 @@
 {
   "Promoters": [
+    "ShareholdingOfPromoterAndPromoterGroupMember",
+    "IndianMember",
+    "ForeignMember",
     "IndividualsOrHinduUndividedFamilyMember",
-    "CentralGovernmentStateGovernmentMember",
-    "FinancialInstitutionsBanksMember",
-    "AnyOtherPromoterMember",
-    "ForeignPromoterMember",
-    "ShareholdingOfPromoterAndPromoterGroupMember"
+    "CentralGovernmentOrStateGovernmentSMember",
+    "IndianFinancialInstitutionsOrBanksMember",
+    "OtherIndianShareholdersMember",
+    "NonResidentIndividualsOrForeignIndividualsMember",
+    "ForeignGovernmentMember",
+    "ForeignInstitutionsMember",
+    "ForeignPortfolioInvestorMember",
+    "OtherForeignShareholdersMember"
   ],
-  "Foreign Institutions": [
+  "FII": [
+    "InstitutionsForeignMember",
+    "ForeignDirectInvestmentMember",
+    "ForeignVentureCapitalInvestorsMember",
+    "SovereignWealthFundsForeignMember",
     "InstitutionsForeignPortfolioInvestorCategoryOneMember",
     "InstitutionsForeignPortfolioInvestorCategoryTwoMember",
-    "OtherInstitutionsForeignMember",
-    "ForeignPortfolioInvestorsMember",
-    "ForeignDirectInvestmentMember"
+    "OverseasDepositoriesMember",
+    "OtherInstitutionsForeignMember"
   ],
-  "Domestic Institutions": [
+  "DII": [
+    "InstitutionsDomesticMember",
     "MutualFundsOrUTIMember",
+    "VentureCapitalFundsMember",
     "AlternativeInvestmentFundsMember",
     "BanksMember",
     "InsuranceCompaniesMember",
     "ProvidentFundsOrPensionFundsMember",
+    "AssetReconstructionCompaniesMember",
     "SovereignWealthFundsDomesticMember",
-    "NBFCsRegisteredWithRBIMember"
+    "NBFCsRegisteredWithRBIMember",
+    "OtherFinancialInstitutionsMember",
+    "OtherInstitutionsDomesticMember"
   ],
-  "Retail Individuals": [
+  "Govt": [
+    "GovernmentsMember",
+    "CentralGovernmentOrPresidentOfIndiaMember",
+    "StateGovernmentsOrGovernorsMember",
+    "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
+  ],
+  "Retail Public": [
     "ResidentIndividualShareholdersHoldingNominalShareCapitalUpToRsTwoLakhMember",
     "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
   ],
-  "Government": [
-    "GovernmentsMember"
-  ],
   "Others": [
+    "SharesHeldByNonPromoterNonPublicShareholdersMember",
+    "CustodianOrDRHolderMember",
+    "EmployeeBenefitsTrustsMember",
+    "NonInstitutionsMember",
+    "AssociateCompaniesOrSubsidiariesMember",
+    "DirectorsAndDirectorsRelativesMember",
+    "KeyManagerialPersonnelMember",
+    "RelativesOfPromotersOtherThanPromoterGroupMember",
+    "TrustsWhereAnyPersonBelongingToPromoterAndPromoterGroupIsTrusteeOrBeneficiaryOrAuthorOfTrustMember",
+    "InvestorEducationAndProtectionFundMember",
     "NonResidentIndiansMember",
     "ForeignNationalsMember",
     "ForeignCompaniesMember",
     "BodiesCorporateMember",
-    "OtherNonInstitutionsMember",
-    "EmployeeBenefitsTrustsMember",
-    "CustodianOrDRHolderMember",
-    "InvestorEducationAndProtectionFundMember",
-    "AnyOtherPublicMember",
-    "SharesHeldByNonPromoterNonPublicShareholdersMember"
+    "OtherNonInstitutionsMember"
   ]
 }

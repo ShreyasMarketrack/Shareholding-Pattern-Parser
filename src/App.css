@@ -32,7 +32,7 @@ h1 {
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   background: var(--panel-bg);
   padding: 1.5rem;
   border-radius: 16px;
@@ -81,6 +81,35 @@ select:focus {
 
 select option {
   background-color: var(--bg-color);
+  color: #fff;
+}
+
+.general-info-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  background: rgba(99, 102, 241, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 1.1rem;
+  font-weight: 600;
   color: #fff;
 }
 
@@ -165,7 +194,6 @@ select option {
   transform: rotate(90deg);
 }
 
-/* Progress bar inside the table */
 .percentage-bar-container {
   width: 120px;
   height: 6px;
@@ -201,6 +229,17 @@ select option {
   color: var(--text-muted);
   font-size: 0.95rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.child-name {
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.child-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 0.25rem;
 }
 
 .child-row:last-child td {

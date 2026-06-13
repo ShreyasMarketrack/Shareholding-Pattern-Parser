@@ -15,7 +15,6 @@ function App() {
   const [expandedCategories, setExpandedCategories] = useState({});
 
   useEffect(() => {
-    // Fetch the processed data
     fetch('/data/all_shp_data.json')
       .then(res => res.json())
       .then(json => {
@@ -33,7 +32,6 @@ function App() {
       .catch(err => console.error("Failed to load data", err));
   }, []);
 
-  // Update quarter when company changes
   useEffect(() => {
     if (data && selectedCompany && data.data[selectedCompany]) {
       const quarters = Object.keys(data.data[selectedCompany]);
@@ -41,7 +39,7 @@ function App() {
         setSelectedQuarter(quarters[0]);
       }
     }
-  }, [selectedCompany, data]);
+  }, [selectedCompany, data, selectedQuarter]);
 
   const toggleCategory = (category) => {
     setExpandedCategories(prev => ({
@@ -54,16 +52,22 @@ function App() {
     return <div className="loading">Loading Shareholding Data...</div>;
   }
 
-  const currentData = data.data[selectedCompany]?.[selectedQuarter];
+  const currentDataset = data.data[selectedCompany]?.[selectedQuarter];
   
-  // Define exact order of categories as per UI design
+  if (!currentDataset) {
+    return <div className="error-message">No data available for this selection.</div>;
+  }
+  
+  const currentData = currentDataset.categories;
+  const genInfo = currentDataset.general_info;
+  
   const categoryOrder = [
     "Promoters",
-    "Foreign Institutions",
-    "Domestic Institutions",
-    "Retail Individuals",
-    "Others",
-    "Government"
+    "FII",
+    "DII",
+    "Govt",
+    "Retail Public",
+    "Others"
   ];
 
   let totalPercentage = 0;
@@ -71,8 +75,8 @@ function App() {
   return (
     <div className="app-container">
       <header>
-        <h1>Shareholding Pattern</h1>
-        <p className="subtitle">Definitive Source of Truth Mapping</p>
+        <h1>Shareholding Pattern Viewer</h1>
+        <p className="subtitle">Official XBRL Taxonomy Representation</p>
       </header>
 
       <div className="controls">
@@ -94,92 +98,111 @@ function App() {
             value={selectedQuarter} 
             onChange={e => setSelectedQuarter(e.target.value)}
           >
-            {data.data[selectedCompany] && Object.keys(data.data[selectedCompany]).map(q => (
+            {Object.keys(data.data[selectedCompany] || {}).map(q => (
               <option key={q} value={q}>{q}</option>
             ))}
           </select>
         </div>
       </div>
+      
+      {genInfo && (
+        <div className="general-info-panel">
+          <div className="info-item">
+            <span className="info-label">Company Name:</span>
+            <span className="info-value">{genInfo.NameOfTheCompany || 'N/A'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Scrip Code / Symbol:</span>
+            <span className="info-value">{genInfo.ScripCode || 'N/A'} / {genInfo.Symbol || 'N/A'}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Date of Report:</span>
+            <span className="info-value">{genInfo.DateOfReport || 'N/A'}</span>
+          </div>
+        </div>
+      )}
 
       <div className="table-container">
-        {currentData ? (
-          <table className="shp-table">
-            <thead>
-              <tr>
-                <th>Category of Shareholder</th>
-                <th>Shareholding %</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categoryOrder.map(category => {
-                const catData = currentData[category];
-                if (!catData) return null;
-                
-                totalPercentage += catData.percentage;
-                const isExpanded = expandedCategories[category];
+        <table className="shp-table">
+          <thead>
+            <tr>
+              <th>Category of Shareholder</th>
+              <th>Shareholding %</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categoryOrder.map(category => {
+              const catData = currentData[category];
+              if (!catData) return null;
+              
+              totalPercentage += catData.percentage;
+              const isExpanded = expandedCategories[category];
+              
+              // Filter to show specific shareholder entities in the expanded view
+              const subEntities = catData.entities.filter(e => e.is_specific);
 
-                return (
-                  <tr className="row-group" key={category}>
-                    <td colSpan="2" style={{ padding: 0 }}>
-                      <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                        <tbody>
-                          <tr 
-                            className={`parent-row ${isExpanded ? 'expanded' : ''}`}
-                            onClick={() => toggleCategory(category)}
-                          >
-                            <td>
-                              <div className="category-cell">
-                                <span className={`expand-icon ${isExpanded ? 'open' : ''}`}>
-                                  <ChevronRight />
-                                </span>
-                                {category}
+              return (
+                <tr className="row-group" key={category}>
+                  <td colSpan="2" style={{ padding: 0 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                      <tbody>
+                        <tr 
+                          className={`parent-row ${isExpanded ? 'expanded' : ''}`}
+                          onClick={() => toggleCategory(category)}
+                        >
+                          <td>
+                            <div className="category-cell">
+                              <span className={`expand-icon ${isExpanded ? 'open' : ''}`}>
+                                <ChevronRight />
+                              </span>
+                              {category}
+                            </div>
+                          </td>
+                          <td>
+                            <div className="percentage-bar-container">
+                              <div 
+                                className="percentage-bar" 
+                                style={{ width: `${Math.min(100, catData.percentage)}%` }}
+                              ></div>
+                            </div>
+                            {catData.percentage.toFixed(2)}%
+                          </td>
+                        </tr>
+                        
+                        {isExpanded && subEntities.length > 0 && (
+                          <tr className="child-rows-container">
+                            <td colSpan="2" style={{ padding: 0 }}>
+                              <div className="child-rows">
+                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                                  <tbody>
+                                    {subEntities.map((child, idx) => (
+                                      <tr className="child-row" key={idx}>
+                                        <td>
+                                          <div className="child-name">{child.name}</div>
+                                          <div className="child-meta">({child.member_type}) - {child.shares.toLocaleString()} shares</div>
+                                        </td>
+                                        <td>{child.percentage.toFixed(2)}%</td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
                               </div>
-                            </td>
-                            <td>
-                              <div className="percentage-bar-container">
-                                <div 
-                                  className="percentage-bar" 
-                                  style={{ width: `${Math.min(100, catData.percentage)}%` }}
-                                ></div>
-                              </div>
-                              {catData.percentage.toFixed(2)}%
                             </td>
                           </tr>
-                          
-                          {isExpanded && catData.children && catData.children.length > 0 && (
-                            <tr className="child-rows-container">
-                              <td colSpan="2" style={{ padding: 0 }}>
-                                <div className="child-rows">
-                                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                                    <tbody>
-                                      {catData.children.map((child, idx) => (
-                                        <tr className="child-row" key={idx}>
-                                          <td>{child.name}</td>
-                                          <td>{child.percentage.toFixed(2)}%</td>
-                                        </tr>
-                                      ))}
-                                    </tbody>
-                                  </table>
-                                </div>
-                              </td>
-                            </tr>
-                          )}
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                );
-              })}
-              
-              <tr className="total-row">
-                <td>Total Validated Shareholding</td>
-                <td>{totalPercentage.toFixed(2)}%</td>
-              </tr>
-            </tbody>
-          </table>
-        ) : (
-          <div className="error-message">No data available for this selection.</div>
-        )}
+                        )}
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              );
+            })}
+            
+            <tr className="total-row">
+              <td>Total Validated Shareholding</td>
+              <td>{totalPercentage.toFixed(2)}%</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

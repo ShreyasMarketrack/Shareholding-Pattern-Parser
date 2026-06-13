@@ -237,9 +237,19 @@ def parse_processed(filepath):
         # Find matching domain for entities (heuristically by replacing Member with Domain)
         if member:
             domain_name = member.replace('Member', 'Domain')
-            if domain_name == 'IndividualsOrHinduUndividedFamilyDomain': domain_name = 'IndividualsOrHUFDomain'
-            if domain_name in data:
-                entities_dict = data[domain_name]
+            domain_candidates = [
+                domain_name,
+                domain_name.replace('IndividualsOrHinduUndividedFamily', 'IndividualsOrHUF'),
+                domain_name.replace('Other', 'Others'),
+                domain_name.replace('InstitutionsForeignPortfolioInvestorCategoryOne', 'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOne'),
+                domain_name.replace('InstitutionsForeignPortfolioInvestorCategoryTwo', 'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorTwo'),
+                domain_name.replace('OtherInstitutionsForeign', 'DetailsOfSharesHeldByOtherInstitutionsForeign')
+            ]
+            
+            matched_domain = next((d for d in domain_candidates if d in data), None)
+            
+            if matched_domain:
+                entities_dict = data[matched_domain]
                 for entity_data in entities_dict.values():
                     try: pct = float(entity_data.get("ShareholdingAsAPercentageOfTotalNumberOfShares", 0.0))
                     except ValueError: pct = 0.0

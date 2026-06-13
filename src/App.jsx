@@ -7,11 +7,23 @@ const ChevronRight = () => (
   </svg>
 );
 
-const TaxonomyNode = ({ node, depth = 0 }) => {
+const TaxonomyNode = ({ node, depth = 0, hideZeroValues }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
-  const hasChildren = node.children && node.children.length > 0;
-  const hasEntities = node.entities && node.entities.length > 0;
+  if (hideZeroValues && (node.percentage || 0) === 0 && (node.shares || 0) === 0) {
+    return null;
+  }
+
+  const validChildren = hideZeroValues 
+    ? (node.children || []).filter(c => c.percentage > 0 || c.shares > 0)
+    : (node.children || []);
+    
+  const validEntities = hideZeroValues
+    ? (node.entities || []).filter(e => e.percentage > 0 || e.shares > 0)
+    : (node.entities || []);
+
+  const hasChildren = validChildren.length > 0;
+  const hasEntities = validEntities.length > 0;
   const isExpandable = hasChildren || hasEntities;
 
   const toggleNode = () => {
@@ -47,11 +59,11 @@ const TaxonomyNode = ({ node, depth = 0 }) => {
         </td>
       </tr>
       
-      {isExpanded && hasChildren && node.children.map((child, idx) => (
-        <TaxonomyNode key={idx} node={child} depth={depth + 1} />
+      {isExpanded && hasChildren && validChildren.map((child, idx) => (
+        <TaxonomyNode key={idx} node={child} depth={depth + 1} hideZeroValues={hideZeroValues} />
       ))}
 
-      {isExpanded && hasEntities && node.entities.map((entity, idx) => (
+      {isExpanded && hasEntities && validEntities.map((entity, idx) => (
         <tr className={`entity-row depth-${depth + 1}`} key={`entity-${idx}`}>
           <td style={{ paddingLeft: `${1.5 + (depth + 1) * 2}rem` }}>
             <div className="entity-name">{entity.name}</div>
@@ -68,9 +80,12 @@ function App() {
   const [data, setData] = useState(null);
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedQuarter, setSelectedQuarter] = useState('');
+  const [dataSource, setDataSource] = useState('raw');
+  const [hideZeroValues, setHideZeroValues] = useState(true);
 
   useEffect(() => {
-    fetch('/data/all_shp_data.json')
+    setData(null);
+    fetch(`/data/all_shp_data_${dataSource}.json`)
       .then(res => res.json())
       .then(json => {
         setData(json);
@@ -84,8 +99,8 @@ function App() {
           }
         }
       })
-      .catch(err => console.error("Failed to load data", err));
-  }, []);
+      .catch(err => console.error(`Failed to load ${dataSource} data`, err));
+  }, [dataSource]);
 
   useEffect(() => {
     if (data && selectedCompany && data.data[selectedCompany]) {
@@ -103,7 +118,24 @@ function App() {
   const currentDataset = data.data[selectedCompany]?.[selectedQuarter];
   
   if (!currentDataset) {
-    return <div className="error-message">No data available for this selection.</div>;
+    return (
+      <div className="app-container">
+        <header>
+          <h1>Shareholding Pattern Viewer</h1>
+          <p className="subtitle">Data source mismatch</p>
+        </header>
+        <div className="controls">
+          <div className="control-group">
+            <label>Data Source</label>
+            <div className="toggle-buttons">
+              <button className={dataSource === 'raw' ? 'active' : ''} onClick={() => setDataSource('raw')}>Raw XBRL JSON</button>
+              <button className={dataSource === 'processed' ? 'active' : ''} onClick={() => setDataSource('processed')}>Processed JSON</button>
+            </div>
+          </div>
+        </div>
+        <div className="error-message">No data available for this selection in the current source. Please select another company or switch data source.</div>
+      </div>
+    );
   }
   
   const currentCategories = currentDataset.categories;
@@ -124,6 +156,14 @@ function App() {
       </header>
 
       <div className="controls">
+        <div className="control-group">
+          <label>Data Source</label>
+          <div className="toggle-buttons">
+            <button className={dataSource === 'raw' ? 'active' : ''} onClick={() => setDataSource('raw')}>Raw XBRL JSON</button>
+            <button className={dataSource === 'processed' ? 'active' : ''} onClick={() => setDataSource('processed')}>Processed JSON</button>
+          </div>
+        </div>
+
         <div className="control-group">
           <label>Company</label>
           <select 
@@ -147,22 +187,41 @@ function App() {
             ))}
           </select>
         </div>
+        
+        <div className="control-group filter-group">
+          <label className="checkbox-label">
+            <input 
+              type="checkbox" 
+              checked={hideZeroValues} 
+              onChange={e => setHideZeroValues(e.target.checked)} 
+            />
+            Hide Zero Values
+          </label>
+        </div>
       </div>
       
       {genInfo && (
         <div className="general-info-panel">
-          <div className="info-item">
-            <span className="info-label">Company Name:</span>
-            <span className="info-value">{genInfo.NameOfTheCompany || 'N/A'}</span>
+          <div className="info-grid">
+            <div className="info-item">
+              <span className="info-label">Company Name:</span>
+              <span className="info-value">{genInfo.NameOfTheCompany || 'N/A'}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Scrip Code / Symbol:</span>
+              <span className="info-value">{genInfo.ScripCode || 'N/A'} / {genInfo.Symbol || 'N/A'}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Date of Report:</span>
+              <span className="info-value">{genInfo.DateOfReport || 'N/A'}</span>
+            </div>
           </div>
-          <div className="info-item">
-            <span className="info-label">Scrip Code / Symbol:</span>
-            <span className="info-value">{genInfo.ScripCode || 'N/A'} / {genInfo.Symbol || 'N/A'}</span>
-          </div>
-          <div className="info-item">
-            <span className="info-label">Date of Report:</span>
-            <span className="info-value">{genInfo.DateOfReport || 'N/A'}</span>
-          </div>
+          {genInfo.Disclosure && (
+            <div className="disclosure-box">
+              <h4>Disclosures & Notes</h4>
+              <p>{genInfo.Disclosure}</p>
+            </div>
+          )}
         </div>
       )}
 
@@ -176,7 +235,7 @@ function App() {
           </thead>
           <tbody>
             {currentCategories.map((cat, idx) => (
-              <TaxonomyNode key={idx} node={cat} />
+              <TaxonomyNode key={idx} node={cat} hideZeroValues={hideZeroValues} />
             ))}
             
             <tr className="total-row">

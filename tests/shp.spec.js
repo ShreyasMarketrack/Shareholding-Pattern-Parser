@@ -31,19 +31,43 @@ test('Shareholding Viewer displays nested taxonomy groups accurately', async ({ 
   // Click on "Indian" to expand it
   await page.click('text=Indian');
 
+  // Since we default to Hide Zero Values = true, Individuals/HUF is hidden (it's 0%).
+  // Let's toggle off "Hide Zero Values" to see it
+  const hideZeroCheckbox = page.locator('label.checkbox-label input[type="checkbox"]');
+  await hideZeroCheckbox.uncheck();
+
   // Now "Individuals/Hindu undivided Family" should be visible
   await expect(page.locator('text=Individuals/Hindu undivided Family').first()).toBeVisible();
 
   // Click on it
   await page.click('text=Individuals/Hindu undivided Family');
 
-  // Verify that specific entities are shown (e.g. shareholder names or the aggregate generic string)
-  // We'll just verify the depth-3 rows are visible
-  const deepRowsCount = await page.locator('.entity-row.depth-3').count();
-  console.log(`Found ${deepRowsCount} specific entities under Individuals/HUF`);
+  // Now we should see the deep rows
+  let deepRowsCount = await page.locator('.entity-row.depth-3').count();
+  console.log(`Found ${deepRowsCount} specific entities under Individuals/HUF with Hide Zero OFF`);
+  expect(deepRowsCount).toBeGreaterThan(0);
   
-  // At least one specific member or generic grouping should appear
-  expect(deepRowsCount).toBeGreaterThanOrEqual(0);
+  // Turn Hide Zero Values back on
+  await hideZeroCheckbox.check();
+  
+  // Let's check "Any Other (specify)" which has the 32.9% Adani Trust
+  await page.click('text=Any Other (specify)');
+  const otherRowsCount = await page.locator('.entity-row').filter({ hasText: 'Adani Family Trust' }).count();
+  console.log(`Found Adani Family Trust: ${otherRowsCount}`);
+  expect(otherRowsCount).toBeGreaterThan(0);
+
+  // Switch to Processed JSON
+  await page.click('button:has-text("Processed JSON")');
+  await page.waitForTimeout(500); // wait for data fetch
+  
+  const companyNameProcessed = await page.textContent('.info-item:has-text("Company Name") .info-value');
+  expect(companyNameProcessed).toBeTruthy();
+  console.log(`Loaded processed company: ${companyNameProcessed}`);
+  
+  const totalShareholdingProcessed = await page.textContent('.total-row td:last-child');
+  const totalValProc = parseFloat(totalShareholdingProcessed);
+  expect(totalValProc).toBeLessThanOrEqual(100.01);
+  expect(totalValProc).toBeGreaterThan(0);
 
   console.log("Playwright test completed successfully!");
 });

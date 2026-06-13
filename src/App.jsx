@@ -10,16 +10,16 @@ const ChevronRight = () => (
 const TaxonomyNode = ({ node, depth = 0, hideZeroValues }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   
-  if (hideZeroValues && (node.percentage || 0) === 0 && (node.shares || 0) === 0) {
+  if (hideZeroValues && (node.percentage || 0) === 0) {
     return null;
   }
 
   const validChildren = hideZeroValues 
-    ? (node.children || []).filter(c => c.percentage > 0 || c.shares > 0)
+    ? (node.children || []).filter(c => (c.percentage || 0) > 0)
     : (node.children || []);
     
   const validEntities = hideZeroValues
-    ? (node.entities || []).filter(e => e.percentage > 0 || e.shares > 0)
+    ? (node.entities || []).filter(e => (e.percentage || 0) > 0)
     : (node.entities || []);
 
   const hasChildren = validChildren.length > 0;

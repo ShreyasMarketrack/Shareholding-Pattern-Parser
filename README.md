@@ -1,74 +1,92 @@
-# Shareholding Pattern (SHP) Viewer
+# Shareholding Pattern Parser & Viewer
 
-## Context
-The Shareholding Pattern Viewer is a dedicated React application designed to parse, aggregate, and visualize Indian corporate shareholding data. Company secretaries submit their Shareholding Pattern via official MCA (Ministry of Corporate Affairs) Excel utilities which get converted to XBRL (XML/JSON). The raw data is highly structured, and often, direct extraction leads to data overlap (e.g., percentages exceeding 100%) due to parent-child tag duplication.
+A sophisticated, full-stack solution for ingesting, parsing, transforming, and visualizing deep, recursive XBRL Shareholding Pattern data submitted by Indian companies to regulatory authorities (like the MCA/BSE).
 
-## Goals
-- Provide a clear, definitive "Source of Truth" mapping from complex XBRL tags to a simplified 6-bucket UI structure.
-- Parse raw XBRL JSONs correctly grouping entities via their `contextref`.
-- Display a dynamic, tabular UI to explore shareholding across various companies and reporting quarters.
-- Guarantee that top-level percentage groupings sum strictly to 100%.
+This application processes raw XBRL JSON extracts or pre-processed MCA domains, unifies them into a strict hierarchical taxonomy tree, and renders them in a highly interactive, beautifully designed React frontend.
 
-## Non-Goals
-- Editing or submitting new XBRL files back to the exchanges.
-- Extracting data from PDF/HTML documents (relies entirely on structured XBRL JSON/XML).
-- Advanced analytical charting (focus is on a structured, expandable tabular view).
+---
 
-## How to Navigate and Use
-1.  **Select a Company**: Use the dropdown to choose from the available companies in the `Examples` directory.
-2.  **Select a Quarter**: Choose the corresponding reporting quarter.
-3.  **Explore the Table**: The table displays 6 root rows. Click on any row to expand it and view the specific constituent shareholders grouped correctly by their `contextref`.
+## 🎯 Core Objectives & Goals
 
-## The 6 Shareholding Categories
+### Goals
+- **Precise Taxonomic Recreation**: Perfectly mirror the exact N-ary tree relationships found in the official `SHP Taxonomy` definition linkbases (e.g., `Promoters` -> `Indian` -> `Individuals/Hindu undivided Family`).
+- **Dual Data Source Support**: Seamlessly parse both Raw XBRL representations and flattened, pre-processed MCA domain JSON formats.
+- **Flawless Mathematical Rollups**: Aggregate leaf-node entity shareholdings bottom-up to ensure totals never exceed `100.01%` while automatically rectifying fractional data (`1.0` vs `100.0`).
+- **Interactive Visualization**: Provide an expandable, nested UI with advanced filtering (Zero-value hiding) and instant toggling between source mechanisms.
 
-This application maps raw XBRL tags into six distinct, mutually exclusive top-level categories. Here is the conceptual mapping hierarchy:
+### Non-Goals
+- Real-time fetching from live BSE servers (this operates on local data drops).
+- Modifying or writing data back to the XBRL structures.
 
-```mermaid
-graph TD
-    Root[Total Shareholding 100%]
-    Root --> P[Promoters]
-    Root --> FI[Foreign Institutions]
-    Root --> DI[Domestic Institutions]
-    Root --> RI[Retail Individuals]
-    Root --> GOV[Government]
-    Root --> O[Others]
+---
 
-    P --> P1[Promoter Individuals / Hindu Undivided Family]
-    P --> P2[Promoter Corporate Bodies]
-    
-    FI --> FI1[Foreign Portfolio Investors]
-    FI --> FI2[Foreign Direct Investment]
-    
-    DI --> DI1[Mutual Funds]
-    DI --> DI2[Alternative Investment Funds]
-    DI --> DI3[Insurance Companies]
-    DI --> DI4[Banks / Financial Institutions]
-    
-    RI --> RI1[Resident Individuals holding nominal share capital <= Rs 2 Lakhs]
-    RI --> RI2[Resident Individuals holding nominal share capital > Rs 2 Lakhs]
-    
-    GOV --> GOV1[Central Government]
-    GOV --> GOV2[State Government]
-    
-    O --> O1[Non Resident Indians]
-    O --> O2[Trusts / Clearing Members]
-    O --> O3[Any Other]
+## 🧠 Architectural Overview
+
+### 1. JSON Taxonomy Grouping (`shp_mapping.json`)
+Instead of a flattened string array, the taxonomy is structured dynamically as a deeply nested N-ary tree. 
+- Categories branch out recursively (`Promoters -> Indian -> Institutions -> Financial Institutions`).
+- This file acts as the source of truth for the Python parser to map dynamic contexts to fixed tree locations.
+
+### 2. Python Data Processor (`process_shp.py`)
+A heavy-duty traversal and parsing engine responsible for:
+- **Raw XBRL Mode**: Identifying dimensional contexts (including explicit string manipulations for edge cases like `D_` prefixes) and mapping them back to the XBRL taxonomy.
+- **Processed JSON Mode**: Applying heuristic fallback techniques to map volatile domain names (e.g., `OtherIndianShareholdersMember` -> `OthersIndianShareholdersDomain`) into the taxonomy tree.
+- **Mathematical Rollups**: Summing nested arrays into top-level percentages (`max(explicit_percentage, sum(children))`).
+- **Fractional Normalization**: Automatically multiplying values by 100 if the root total evaluates to `< 1.02`.
+
+### 3. React Frontend (`App.jsx`)
+A responsive, modern UI built with Vite:
+- **Recursive Rendering**: Utilizes `<TaxonomyNode />` to endlessly render indentations based on tree depth.
+- **UI Filters**: Implements custom CSS toggle switches for "Hide Zero Values" (strictly stripping `0%` rows to reduce noise).
+- **Dual Source Toggling**: Pill-shaped segmented controls to instantly hot-swap the UI between the parsed Raw XBRL output and parsed Pre-processed output.
+- **Entity Sorting**: Organizes specific individual shareholders inside categories in strictly descending numerical order.
+- **Disclosure Display**: Extracts `DisclosureOfNotesOnShareholdingPatternExplanatoryTextBlock` globally to display context-level explanatory notes.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js**: v18+ (for Vite/React)
+- **Python**: 3.9+ (for the parser)
+- **Playwright**: For UI automation testing
+
+### Installation & Execution
+
+1. **Install Frontend Dependencies**
+   ```bash
+   npm install
+   ```
+2. **Generate the Data**
+   Run the Python script against your local data directories to generate `all_shp_data_raw.json` and `all_shp_data_processed.json`.
+   ```bash
+   python process_shp.py
+   ```
+3. **Start the Development Server**
+   ```bash
+   npm run dev
+   ```
+   Navigate to `http://localhost:5173/` in your browser.
+
+---
+
+## 🧪 Playwright Testing Suite
+
+To guarantee visual and mathematical accuracy, we enforce Playwright E2E testing on Chromium browsers.
+
+### Execution
+Run the automated test suite locally via:
+```bash
+npx playwright test --browser=chromium
 ```
 
-### 1. Promoters
-Includes individuals, families, or corporate bodies that are the primary founders/promoters of the company.
-
-### 2. Foreign Institutions
-Includes Foreign Portfolio Investors (FPIs), Foreign Direct Investment, and other institutional holdings originating outside India.
-
-### 3. Domestic Institutions
-Encompasses Mutual Funds, Banks, Insurance Companies, and Alternative Investment Funds (AIFs) operating within India.
-
-### 4. Retail Individuals
-General public shareholders categorized by the nominal value of share capital they hold (e.g., up to Rs 2 Lakhs, or above Rs 2 Lakhs).
-
-### 5. Government
-Holdings by the President of India, Central Government, or State Governments.
-
-### 6. Others
-A catch-all bucket for trusts, clearing members, Non-Resident Indians (NRIs), and other categories that do not fit into the primary five buckets.
+### What is Tested (`shp.spec.js`)
+1. **Application Load**: Verifies the root application mounts and the initial JSON data populates.
+2. **Metadata Presence**: Asserts that `Company Name` and `Total Shareholding` metrics render.
+3. **Mathematical Safety Limits**: Ensures that the `Total Validated Shareholding` calculates strictly to `<= 100.01%` and `> 0%`.
+4. **Interactive Expansions**: Simulates user clicks to traverse nested taxonomy elements (e.g., expanding `Promoters` -> `Indian`).
+5. **Zero-Value Filtration Verification**: 
+   - Dynamically clicks the custom CSS `.slider` switch to disable "Hide Zero Values".
+   - Verifies deeply nested elements mathematically equal to `0.00%` (like `Individuals/Hindu undivided Family` inside Adani) become correctly visible.
+   - Re-engages the switch to test DOM hiding.
+6. **Data Toggling Integrity**: Simulates switching from "Raw JSON" to "Processed JSON", waiting for network refetches, and asserting that total limits remain unviolated across datasets.

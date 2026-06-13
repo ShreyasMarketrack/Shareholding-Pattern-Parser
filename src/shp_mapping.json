@@ -1,67 +1,108 @@
 {
-  "Promoters": [
-    "ShareholdingOfPromoterAndPromoterGroupMember",
-    "IndianMember",
-    "ForeignMember",
-    "IndividualsOrHinduUndividedFamilyMember",
-    "CentralGovernmentOrStateGovernmentSMember",
-    "IndianFinancialInstitutionsOrBanksMember",
-    "OtherIndianShareholdersMember",
-    "NonResidentIndividualsOrForeignIndividualsMember",
-    "ForeignGovernmentMember",
-    "ForeignInstitutionsMember",
-    "ForeignPortfolioInvestorMember",
-    "OtherForeignShareholdersMember"
-  ],
-  "FII": [
-    "InstitutionsForeignMember",
-    "ForeignDirectInvestmentMember",
-    "ForeignVentureCapitalInvestorsMember",
-    "SovereignWealthFundsForeignMember",
-    "InstitutionsForeignPortfolioInvestorCategoryOneMember",
-    "InstitutionsForeignPortfolioInvestorCategoryTwoMember",
-    "OverseasDepositoriesMember",
-    "OtherInstitutionsForeignMember"
-  ],
-  "DII": [
-    "InstitutionsDomesticMember",
-    "MutualFundsOrUTIMember",
-    "VentureCapitalFundsMember",
-    "AlternativeInvestmentFundsMember",
-    "BanksMember",
-    "InsuranceCompaniesMember",
-    "ProvidentFundsOrPensionFundsMember",
-    "AssetReconstructionCompaniesMember",
-    "SovereignWealthFundsDomesticMember",
-    "NBFCsRegisteredWithRBIMember",
-    "OtherFinancialInstitutionsMember",
-    "OtherInstitutionsDomesticMember"
-  ],
-  "Govt": [
-    "GovernmentsMember",
-    "CentralGovernmentOrPresidentOfIndiaMember",
-    "StateGovernmentsOrGovernorsMember",
-    "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember"
-  ],
-  "Retail Public": [
-    "ResidentIndividualShareholdersHoldingNominalShareCapitalUpToRsTwoLakhMember",
-    "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember"
-  ],
-  "Others": [
-    "SharesHeldByNonPromoterNonPublicShareholdersMember",
-    "CustodianOrDRHolderMember",
-    "EmployeeBenefitsTrustsMember",
-    "NonInstitutionsMember",
-    "AssociateCompaniesOrSubsidiariesMember",
-    "DirectorsAndDirectorsRelativesMember",
-    "KeyManagerialPersonnelMember",
-    "RelativesOfPromotersOtherThanPromoterGroupMember",
-    "TrustsWhereAnyPersonBelongingToPromoterAndPromoterGroupIsTrusteeOrBeneficiaryOrAuthorOfTrustMember",
-    "InvestorEducationAndProtectionFundMember",
-    "NonResidentIndiansMember",
-    "ForeignNationalsMember",
-    "ForeignCompaniesMember",
-    "BodiesCorporateMember",
-    "OtherNonInstitutionsMember"
+  "name": "Root",
+  "children": [
+    {
+      "name": "Promoters",
+      "member": "ShareholdingOfPromoterAndPromoterGroupMember",
+      "children": [
+        {
+          "name": "Indian",
+          "member": "IndianMember",
+          "children": [
+            { "name": "Individuals/Hindu undivided Family", "member": "IndividualsOrHinduUndividedFamilyMember" },
+            { "name": "Central Government/ State Government(s)", "member": "CentralGovernmentOrStateGovernmentSMember" },
+            { "name": "Financial Institutions/ Banks", "member": "IndianFinancialInstitutionsOrBanksMember" },
+            { "name": "Any Other (specify)", "member": "OtherIndianShareholdersMember" }
+          ]
+        },
+        {
+          "name": "Foreign",
+          "member": "ForeignMember",
+          "children": [
+            { "name": "Individuals (NonResident Individuals/ Foreign Individuals)", "member": "NonResidentIndividualsOrForeignIndividualsMember" },
+            { "name": "Government", "member": "ForeignGovernmentMember" },
+            { "name": "Institutions", "member": "ForeignInstitutionsMember" },
+            { "name": "Foreign Portfolio Investor", "member": "ForeignPortfolioInvestorMember" },
+            { "name": "Any Other (specify)", "member": "OtherForeignShareholdersMember" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FII",
+      "member": "InstitutionsForeignMember",
+      "children": [
+        { "name": "Foreign Direct Investment", "member": "ForeignDirectInvestmentMember" },
+        { "name": "Foreign Venture Capital Investors", "member": "ForeignVentureCapitalInvestorsMember" },
+        { "name": "Sovereign Wealth Funds", "member": "SovereignWealthFundsForeignMember" },
+        { "name": "Foreign Portfolio Investors Category I", "member": "InstitutionsForeignPortfolioInvestorCategoryOneMember" },
+        { "name": "Foreign Portfolio Investors Category II", "member": "InstitutionsForeignPortfolioInvestorCategoryTwoMember" },
+        { "name": "Overseas Depositories (holding DRs)", "member": "OverseasDepositoriesMember" },
+        { "name": "Any Other (specify)", "member": "OtherInstitutionsForeignMember" }
+      ]
+    },
+    {
+      "name": "DII",
+      "member": "InstitutionsDomesticMember",
+      "children": [
+        { "name": "Mutual Funds/ UTI", "member": "MutualFundsOrUTIMember" },
+        { "name": "Venture Capital Funds", "member": "VentureCapitalFundsMember" },
+        { "name": "Alternate Investment Funds", "member": "AlternativeInvestmentFundsMember" },
+        { "name": "Banks", "member": "BanksMember" },
+        { "name": "Insurance Companies", "member": "InsuranceCompaniesMember" },
+        { "name": "Provident Funds/ Pension Funds", "member": "ProvidentFundsOrPensionFundsMember" },
+        { "name": "Asset Reconstruction Companies", "member": "AssetReconstructionCompaniesMember" },
+        { "name": "Sovereign Wealth Funds", "member": "SovereignWealthFundsDomesticMember" },
+        { "name": "NBFCs registered with RBI", "member": "NBFCsRegisteredWithRBIMember" },
+        { "name": "Other Financial Institutions", "member": "OtherFinancialInstitutionsMember" },
+        { "name": "Any Other (specify)", "member": "OtherInstitutionsDomesticMember" }
+      ]
+    },
+    {
+      "name": "Govt",
+      "member": "GovernmentsMember",
+      "children": [
+        { "name": "Central Government/ President of India", "member": "CentralGovernmentOrPresidentOfIndiaMember" },
+        { "name": "State Government/ Governor", "member": "StateGovernmentsOrGovernorsMember" },
+        { "name": "Shareholding by Companies where Govt is a promoter", "member": "ShareholdingByCompaniesOrBodiesCorporateWhereCentralOrStateGovernmentIsPromoterMember" }
+      ]
+    },
+    {
+      "name": "Retail Public",
+      "children": [
+        { "name": "Resident Individuals holding nominal share capital up to Rs. 2 lakhs", "member": "ResidentIndividualShareholdersHoldingNominalShareCapitalUpToRsTwoLakhMember" },
+        { "name": "Resident Individuals holding nominal share capital in excess of Rs. 2 lakhs", "member": "ResidentIndividualShareholdersHoldingNominalShareCapitalInExcessOfRsTwoLakhMember" }
+      ]
+    },
+    {
+      "name": "Others",
+      "children": [
+        {
+          "name": "Non Institutions",
+          "member": "NonInstitutionsMember",
+          "children": [
+            { "name": "Associate Companies/ Subsidiaries", "member": "AssociateCompaniesOrSubsidiariesMember" },
+            { "name": "Directors and their relatives", "member": "DirectorsAndDirectorsRelativesMember" },
+            { "name": "Key Managerial Personnel", "member": "KeyManagerialPersonnelMember" },
+            { "name": "Relatives of promoters", "member": "RelativesOfPromotersOtherThanPromoterGroupMember" },
+            { "name": "Trusts where any person belonging to Promoter is Trustee", "member": "TrustsWhereAnyPersonBelongingToPromoterAndPromoterGroupIsTrusteeOrBeneficiaryOrAuthorOfTrustMember" },
+            { "name": "Investor Education and Protection Fund", "member": "InvestorEducationAndProtectionFundMember" },
+            { "name": "Non Resident Indians (NRIs)", "member": "NonResidentIndiansMember" },
+            { "name": "Foreign Nationals", "member": "ForeignNationalsMember" },
+            { "name": "Foreign Companies", "member": "ForeignCompaniesMember" },
+            { "name": "Bodies Corporate", "member": "BodiesCorporateMember" },
+            { "name": "Any Other (specify)", "member": "OtherNonInstitutionsMember" }
+          ]
+        },
+        {
+          "name": "Shares held by Non Promoter-Non Public Shareholders",
+          "member": "SharesHeldByNonPromoterNonPublicShareholdersMember",
+          "children": [
+            { "name": "Custodian/DR Holder", "member": "CustodianOrDRHolderMember" },
+            { "name": "Employee Benefit Trusts", "member": "EmployeeBenefitsTrustsMember" }
+          ]
+        }
+      ]
+    }
   ]
 }

@@ -1,18 +1,73 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-// SVG Icon for expand/collapse
 const ChevronRight = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polyline points="9 18 15 12 9 6"></polyline>
   </svg>
 );
 
+const TaxonomyNode = ({ node, depth = 0 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  const hasChildren = node.children && node.children.length > 0;
+  const hasEntities = node.entities && node.entities.length > 0;
+  const isExpandable = hasChildren || hasEntities;
+
+  const toggleNode = () => {
+    if (isExpandable) setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <>
+      <tr 
+        className={`taxonomy-row depth-${depth} ${isExpanded ? 'expanded' : ''} ${!isExpandable ? 'leaf' : ''}`}
+        onClick={toggleNode}
+      >
+        <td style={{ paddingLeft: `${1.5 + depth * 2}rem` }}>
+          <div className="category-cell">
+            {isExpandable ? (
+              <span className={`expand-icon ${isExpanded ? 'open' : ''}`}>
+                <ChevronRight />
+              </span>
+            ) : (
+              <span className="spacer-icon"></span>
+            )}
+            <span className="node-name">{node.name}</span>
+          </div>
+        </td>
+        <td>
+          <div className="percentage-bar-container">
+            <div 
+              className="percentage-bar" 
+              style={{ width: `${Math.min(100, node.percentage || 0)}%` }}
+            ></div>
+          </div>
+          {(node.percentage || 0).toFixed(2)}%
+        </td>
+      </tr>
+      
+      {isExpanded && hasChildren && node.children.map((child, idx) => (
+        <TaxonomyNode key={idx} node={child} depth={depth + 1} />
+      ))}
+
+      {isExpanded && hasEntities && node.entities.map((entity, idx) => (
+        <tr className={`entity-row depth-${depth + 1}`} key={`entity-${idx}`}>
+          <td style={{ paddingLeft: `${1.5 + (depth + 1) * 2}rem` }}>
+            <div className="entity-name">{entity.name}</div>
+            <div className="entity-meta">({entity.member_type}) - {(entity.shares || 0).toLocaleString()} shares</div>
+          </td>
+          <td>{(entity.percentage || 0).toFixed(2)}%</td>
+        </tr>
+      ))}
+    </>
+  );
+};
+
 function App() {
   const [data, setData] = useState(null);
   const [selectedCompany, setSelectedCompany] = useState('');
   const [selectedQuarter, setSelectedQuarter] = useState('');
-  const [expandedCategories, setExpandedCategories] = useState({});
 
   useEffect(() => {
     fetch('/data/all_shp_data.json')
@@ -41,13 +96,6 @@ function App() {
     }
   }, [selectedCompany, data, selectedQuarter]);
 
-  const toggleCategory = (category) => {
-    setExpandedCategories(prev => ({
-      ...prev,
-      [category]: !prev[category]
-    }));
-  };
-
   if (!data) {
     return <div className="loading">Loading Shareholding Data...</div>;
   }
@@ -58,25 +106,21 @@ function App() {
     return <div className="error-message">No data available for this selection.</div>;
   }
   
-  const currentData = currentDataset.categories;
+  const currentCategories = currentDataset.categories;
   const genInfo = currentDataset.general_info;
-  
-  const categoryOrder = [
-    "Promoters",
-    "FII",
-    "DII",
-    "Govt",
-    "Retail Public",
-    "Others"
-  ];
 
   let totalPercentage = 0;
+  if (currentCategories) {
+    currentCategories.forEach(c => {
+      totalPercentage += (c.percentage || 0);
+    });
+  }
 
   return (
     <div className="app-container">
       <header>
         <h1>Shareholding Pattern Viewer</h1>
-        <p className="subtitle">Official XBRL Taxonomy Representation</p>
+        <p className="subtitle">Recursive Taxonomy Implementation</p>
       </header>
 
       <div className="controls">
@@ -131,74 +175,12 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {categoryOrder.map(category => {
-              const catData = currentData[category];
-              if (!catData) return null;
-              
-              totalPercentage += catData.percentage;
-              const isExpanded = expandedCategories[category];
-              
-              // Filter to show specific shareholder entities in the expanded view
-              const subEntities = catData.entities.filter(e => e.is_specific);
-
-              return (
-                <tr className="row-group" key={category}>
-                  <td colSpan="2" style={{ padding: 0 }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                      <tbody>
-                        <tr 
-                          className={`parent-row ${isExpanded ? 'expanded' : ''}`}
-                          onClick={() => toggleCategory(category)}
-                        >
-                          <td>
-                            <div className="category-cell">
-                              <span className={`expand-icon ${isExpanded ? 'open' : ''}`}>
-                                <ChevronRight />
-                              </span>
-                              {category}
-                            </div>
-                          </td>
-                          <td>
-                            <div className="percentage-bar-container">
-                              <div 
-                                className="percentage-bar" 
-                                style={{ width: `${Math.min(100, catData.percentage)}%` }}
-                              ></div>
-                            </div>
-                            {catData.percentage.toFixed(2)}%
-                          </td>
-                        </tr>
-                        
-                        {isExpanded && subEntities.length > 0 && (
-                          <tr className="child-rows-container">
-                            <td colSpan="2" style={{ padding: 0 }}>
-                              <div className="child-rows">
-                                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                                  <tbody>
-                                    {subEntities.map((child, idx) => (
-                                      <tr className="child-row" key={idx}>
-                                        <td>
-                                          <div className="child-name">{child.name}</div>
-                                          <div className="child-meta">({child.member_type}) - {child.shares.toLocaleString()} shares</div>
-                                        </td>
-                                        <td>{child.percentage.toFixed(2)}%</td>
-                                      </tr>
-                                    ))}
-                                  </tbody>
-                                </table>
-                              </div>
-                            </td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              );
-            })}
+            {currentCategories.map((cat, idx) => (
+              <TaxonomyNode key={idx} node={cat} />
+            ))}
             
             <tr className="total-row">
-              <td>Total Validated Shareholding</td>
+              <td style={{ paddingLeft: '1.5rem' }}>Total Validated Shareholding</td>
               <td>{totalPercentage.toFixed(2)}%</td>
             </tr>
           </tbody>

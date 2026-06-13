@@ -4,13 +4,19 @@ from pathlib import Path
 
 # Load mapping
 with open('src/shp_mapping.json', 'r') as f:
-    MAPPING = json.load(f)
+    MAPPING_TREE = json.load(f)
 
-# Reverse mapping for O(1) lookup: tag -> Category
-TAG_TO_CATEGORY = {}
-for category, tags in MAPPING.items():
-    for tag in tags:
-        TAG_TO_CATEGORY[tag] = category
+# Create lookup: tag -> path in tree
+TAG_TO_PATH = {}
+def build_tag_path(node, current_path):
+    if "member" in node:
+        TAG_TO_PATH[node["member"]] = current_path
+    if "children" in node:
+        for child in node["children"]:
+            build_tag_path(child, current_path + [child["name"]])
+
+for child in MAPPING_TREE.get("children", []):
+    build_tag_path(child, [child["name"]])
 
 def get_root(data):
     if 'xbrli:xbrl' in data:
@@ -24,7 +30,6 @@ def find_contexts(data):
     root = get_root(data)
     if not root: return contexts
     
-    # Contexts might be 'xbrli:context' or 'context'
     ctxs = root.get('xbrli:context') or root.get('context', [])
     if isinstance(ctxs, dict):
         ctxs = [ctxs]
@@ -34,7 +39,6 @@ def find_contexts(data):
         if not cid: continue
         contexts[cid] = {'members': [], 'period': None}
         
-        # Extract period
         period = ctx.get('xbrli:period') or ctx.get('period', {})
         if 'xbrli:instant' in period:
             contexts[cid]['period'] = period['xbrli:instant']
@@ -45,12 +49,10 @@ def find_contexts(data):
         elif 'endDate' in period:
             contexts[cid]['period'] = period['endDate']
             
-        # Extract explicit members
         scenario = ctx.get('xbrli:scenario') or ctx.get('scenario', {})
         explicit_members = scenario.get('xbrldi:explicitMember') or scenario.get('explicitMember', [])
         typed_members = scenario.get('xbrldi:typedMember') or scenario.get('typedMember', [])
         
-        # if not found in scenario, check segment
         if not explicit_members and not typed_members:
             entity = ctx.get('xbrli:entity') or ctx.get('entity', {})
             segment = entity.get('xbrli:segment') or entity.get('segment', {})
@@ -72,18 +74,14 @@ def find_contexts(data):
             dim = tm.get('@attributes', {}).get('dimension', '')
             if ':' in dim:
                 dim = dim.split(':')[1]
-            # Map Axis back to Member (heuristic)
-            # e.g. DetailsSharesHeldByIndividualsOrHUFAxis -> IndividualsOrHinduUndividedFamilyMember (mapping is tricky, but we can do a substring match against TAG_TO_CATEGORY)
             dim_name = dim.replace('DetailsOfSharesHeldBy', '').replace('DetailsSharesHeldBy', '').replace('Axis', '')
             
-            # Special case mappings
             if dim_name == 'IndividualsOrHUF': dim_name = 'IndividualsOrHinduUndividedFamily'
             if dim_name == 'InstitutionsForeignPortfolioInvestorOne': dim_name = 'InstitutionsForeignPortfolioInvestorCategoryOne'
             if dim_name == 'InstitutionsForeignPortfolioInvestorTwo': dim_name = 'InstitutionsForeignPortfolioInvestorCategoryTwo'
             
-            # Find closest member in TAG_TO_CATEGORY
             best_match = None
-            for tag in TAG_TO_CATEGORY.keys():
+            for tag in TAG_TO_PATH.keys():
                 if tag.startswith(dim_name):
                     best_match = tag
                     break
@@ -99,7 +97,6 @@ def get_value(data, tag, context_ref=None):
     root = get_root(data)
     if not root: return None
     
-    # Check for tag with and without namespace
     unprefixed_tag = tag.split(':')[-1] if ':' in tag else tag
     
     elements = root.get(tag) or root.get(unprefixed_tag, [])
@@ -118,36 +115,69 @@ def get_value(data, tag, context_ref=None):
                 return el.get('#text', el)
     return None
 
+def init_tree(node):
+    res = {
+        "name": node.get("name"),
+        "member": node.get("member"),
+        "explicit_percentage": 0.0,
+        "explicit_shares": 0.0,
+        "percentage": 0.0,
+        "shares": 0.0,
+        "entities": []
+    }
+    if "children" in node:
+        res["children_dict"] = {c["name"]: init_tree(c) for c in node["children"]}
+    return res
+
+def rollup(node):
+    entities_pct = sum(e["percentage"] for e in node["entities"])
+    entities_shares = sum(e["shares"] for e in node["entities"])
+    
+    children_pct = 0.0
+    children_shares = 0.0
+    
+    if "children_dict" in node:
+        for child in node["children_dict"].values():
+            rollup(child)
+            children_pct += child["percentage"]
+            children_shares += child["shares"]
+            
+        # Convert children_dict to list for frontend
+        node["children"] = list(node["children_dict"].values())
+        del node["children_dict"]
+        
+    node["percentage"] = max(node.get("explicit_percentage", 0.0), entities_pct, children_pct)
+    node["shares"] = max(node.get("explicit_shares", 0.0), entities_shares, children_shares)
+    
 def process_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         data = json.load(f)
         
     contexts = find_contexts(data)
     
-    # Extract General Info
     gen_info = {
-        "NameOfTheCompany": get_value(data, "in-bse-shp:NameOfTheCompany"),
-        "ScripCode": get_value(data, "in-bse-shp:ScripCode"),
-        "Symbol": get_value(data, "in-bse-shp:Symbol"),
-        "DateOfReport": get_value(data, "in-bse-shp:DateOfReport")
+        "NameOfTheCompany": get_value(data, "NameOfTheCompany"),
+        "ScripCode": get_value(data, "ScripCode"),
+        "Symbol": get_value(data, "Symbol"),
+        "DateOfReport": get_value(data, "DateOfReport")
     }
     
-    # Initialize categories
-    categories = {cat: {"percentage": 0.0, "shares": 0, "entities": []} for cat in MAPPING.keys()}
+    categories = {c["name"]: init_tree(c) for c in MAPPING_TREE["children"]}
     
-    # Find all shareholder details based on context
     for cid, ctx in contexts.items():
         if len(ctx['members']) == 0: continue
         
-        mapped_category = None
+        longest_path = []
         primary_member = None
         
         for member in ctx['members']:
-            if member in TAG_TO_CATEGORY:
-                mapped_category = TAG_TO_CATEGORY[member]
-                primary_member = member
-                
-        if not mapped_category:
+            if member in TAG_TO_PATH:
+                path = TAG_TO_PATH[member]
+                if len(path) > len(longest_path):
+                    longest_path = path
+                    primary_member = member
+                    
+        if not longest_path:
             continue
             
         name = get_value(data, "NameOfTheShareholder", cid)
@@ -166,24 +196,52 @@ def process_file(filepath):
             
         is_specific = get_value(data, "NameOfTheShareholder", cid) is not None
         
-        categories[mapped_category]["entities"].append({
-            "name": name,
-            "shares": shares,
-            "percentage": percentage,
-            "member_type": primary_member,
-            "is_specific": is_specific
-        })
+        # Traverse tree to the correct node
+        curr_node = categories[longest_path[0]]
+        for p in longest_path[1:]:
+            curr_node = curr_node["children_dict"][p]
+            
+        if is_specific:
+            curr_node["entities"].append({
+                "name": name,
+                "shares": shares,
+                "percentage": percentage,
+                "member_type": primary_member
+            })
+        else:
+            curr_node["explicit_percentage"] = percentage
+            curr_node["explicit_shares"] = shares
 
-    for cat in categories:
-        specific_sum_pct = sum(e["percentage"] for e in categories[cat]["entities"] if e["is_specific"])
-        root_pct = 0.0
-        for e in categories[cat]["entities"]:
-            if not e["is_specific"]:
-                root_pct = max(root_pct, e["percentage"])
-                
-        categories[cat]["percentage"] = max(specific_sum_pct, root_pct)
+    # Rollup totals
+    for cat in categories.values():
+        rollup(cat)
         
-    return {"general_info": gen_info, "categories": categories}
+    # FIX: The user requested "Retail Public" and "Others" as separate root buckets.
+    # However, in the XBRL taxonomy, "Retail Public" (Resident Individuals) are children of "NonInstitutionsMember".
+    # Because "Others" maps "NonInstitutionsMember", its explicit percentage will include "Retail Public", causing double counting.
+    # We must deduct "Retail Public" from "Others" if "Others" relied on the explicit "NonInstitutionsMember" value.
+    retail_cat = next((c for c in categories.values() if c["name"] == "Retail Public"), None)
+    others_cat = next((c for c in categories.values() if c["name"] == "Others"), None)
+    
+    if retail_cat and others_cat:
+        # Find the 'Non Institutions' child under 'Others'
+        non_inst = next((c for c in others_cat["children"] if c["name"] == "Non Institutions"), None)
+        if non_inst:
+            # If the explicit percentage was used and it's >= retail, subtract retail
+            # We determine if explicit was used if its percentage > sum of its children's percentages
+            children_pct = sum(c["percentage"] for c in non_inst["children"])
+            if non_inst["percentage"] > children_pct and non_inst["percentage"] >= retail_cat["percentage"]:
+                deduction_pct = retail_cat["percentage"]
+                deduction_shares = retail_cat["shares"]
+                
+                non_inst["percentage"] -= deduction_pct
+                non_inst["shares"] -= deduction_shares
+                
+                # Re-rollup Others
+                others_cat["percentage"] = sum(c["percentage"] for c in others_cat["children"])
+                others_cat["shares"] = sum(c["shares"] for c in others_cat["children"])
+        
+    return {"general_info": gen_info, "categories": list(categories.values())}
 
 def main():
     examples_dir = Path("D:/My Drive/New Directories/WORK/XBRL/Shareholding Pattern/Examples")

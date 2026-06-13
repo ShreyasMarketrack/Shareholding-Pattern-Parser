@@ -12,51 +12,110 @@ for category, tags in MAPPING.items():
     for tag in tags:
         TAG_TO_CATEGORY[tag] = category
 
+def get_root(data):
+    if 'xbrli:xbrl' in data:
+        return data['xbrli:xbrl']
+    if 'xbrl' in data:
+        return data['xbrl']
+    return None
+
 def find_contexts(data):
     contexts = {}
-    if 'xbrli:xbrl' in data:
-        ctxs = data['xbrli:xbrl'].get('xbrli:context', [])
-        if isinstance(ctxs, dict):
-            ctxs = [ctxs]
-        for ctx in ctxs:
-            cid = ctx.get('@id')
-            if not cid: continue
-            contexts[cid] = {'members': [], 'period': None}
+    root = get_root(data)
+    if not root: return contexts
+    
+    # Contexts might be 'xbrli:context' or 'context'
+    ctxs = root.get('xbrli:context') or root.get('context', [])
+    if isinstance(ctxs, dict):
+        ctxs = [ctxs]
+        
+    for ctx in ctxs:
+        cid = ctx.get('@id') or ctx.get('@attributes', {}).get('id')
+        if not cid: continue
+        contexts[cid] = {'members': [], 'period': None}
+        
+        # Extract period
+        period = ctx.get('xbrli:period') or ctx.get('period', {})
+        if 'xbrli:instant' in period:
+            contexts[cid]['period'] = period['xbrli:instant']
+        elif 'instant' in period:
+            contexts[cid]['period'] = period['instant']
+        elif 'xbrli:endDate' in period:
+            contexts[cid]['period'] = period['xbrli:endDate']
+        elif 'endDate' in period:
+            contexts[cid]['period'] = period['endDate']
             
-            # Extract period
-            period = ctx.get('xbrli:period', {})
-            if 'xbrli:instant' in period:
-                contexts[cid]['period'] = period['xbrli:instant']
-            elif 'xbrli:endDate' in period:
-                contexts[cid]['period'] = period['xbrli:endDate']
-                
-            # Extract explicit members
-            entity = ctx.get('xbrli:entity', {})
-            segment = entity.get('xbrli:segment', {})
-            explicit_members = segment.get('xbrldi:explicitMember', [])
-            if isinstance(explicit_members, dict):
-                explicit_members = [explicit_members]
-            for em in explicit_members:
-                val = em.get('#text', '')
-                if ':' in val:
-                    val = val.split(':')[1]
-                contexts[cid]['members'].append(val)
+        # Extract explicit members
+        scenario = ctx.get('xbrli:scenario') or ctx.get('scenario', {})
+        explicit_members = scenario.get('xbrldi:explicitMember') or scenario.get('explicitMember', [])
+        typed_members = scenario.get('xbrldi:typedMember') or scenario.get('typedMember', [])
+        
+        # if not found in scenario, check segment
+        if not explicit_members and not typed_members:
+            entity = ctx.get('xbrli:entity') or ctx.get('entity', {})
+            segment = entity.get('xbrli:segment') or entity.get('segment', {})
+            explicit_members = segment.get('xbrldi:explicitMember') or segment.get('explicitMember', [])
+            typed_members = segment.get('xbrldi:typedMember') or segment.get('typedMember', [])
+            
+        if isinstance(explicit_members, dict):
+            explicit_members = [explicit_members]
+        if isinstance(typed_members, dict):
+            typed_members = [typed_members]
+            
+        for em in explicit_members:
+            val = em.get('#text', '')
+            if ':' in val:
+                val = val.split(':')[1]
+            contexts[cid]['members'].append(val)
+            
+        for tm in typed_members:
+            dim = tm.get('@attributes', {}).get('dimension', '')
+            if ':' in dim:
+                dim = dim.split(':')[1]
+            # Map Axis back to Member (heuristic)
+            # e.g. DetailsSharesHeldByIndividualsOrHUFAxis -> IndividualsOrHinduUndividedFamilyMember (mapping is tricky, but we can do a substring match against TAG_TO_CATEGORY)
+            dim_name = dim.replace('DetailsOfSharesHeldBy', '').replace('DetailsSharesHeldBy', '').replace('Axis', '')
+            
+            # Special case mappings
+            if dim_name == 'IndividualsOrHUF': dim_name = 'IndividualsOrHinduUndividedFamily'
+            if dim_name == 'InstitutionsForeignPortfolioInvestorOne': dim_name = 'InstitutionsForeignPortfolioInvestorCategoryOne'
+            if dim_name == 'InstitutionsForeignPortfolioInvestorTwo': dim_name = 'InstitutionsForeignPortfolioInvestorCategoryTwo'
+            
+            # Find closest member in TAG_TO_CATEGORY
+            best_match = None
+            for tag in TAG_TO_CATEGORY.keys():
+                if tag.startswith(dim_name):
+                    best_match = tag
+                    break
+            
+            if best_match:
+                contexts[cid]['members'].append(best_match)
+            else:
+                contexts[cid]['members'].append(dim)
+            
     return contexts
 
 def get_value(data, tag, context_ref=None):
-    if 'xbrli:xbrl' not in data: return None
-    elements = data['xbrli:xbrl'].get(tag, [])
+    root = get_root(data)
+    if not root: return None
+    
+    # Check for tag with and without namespace
+    unprefixed_tag = tag.split(':')[-1] if ':' in tag else tag
+    
+    elements = root.get(tag) or root.get(unprefixed_tag, [])
     if isinstance(elements, dict):
         elements = [elements]
-    
+        
     if context_ref is None:
         if len(elements) > 0:
-            return elements[0].get('#text', elements[0])
+            return elements[0].get('#text', elements[0]) if isinstance(elements[0], dict) else elements[0]
         return None
         
     for el in elements:
-        if isinstance(el, dict) and el.get('@contextRef') == context_ref:
-            return el.get('#text', el)
+        if isinstance(el, dict):
+            c_ref = el.get('@contextRef') or el.get('@attributes', {}).get('contextRef')
+            if c_ref == context_ref:
+                return el.get('#text', el)
     return None
 
 def process_file(filepath):
@@ -80,7 +139,6 @@ def process_file(filepath):
     for cid, ctx in contexts.items():
         if len(ctx['members']) == 0: continue
         
-        # Determine the lowest level member mapped in our taxonomy
         mapped_category = None
         primary_member = None
         
@@ -92,10 +150,9 @@ def process_file(filepath):
         if not mapped_category:
             continue
             
-        # Extract data for this context
-        name = get_value(data, "in-bse-shp:NameOfTheShareholders", cid)
-        shares = get_value(data, "in-bse-shp:NumberOfFullyPaidUpEquitySharesHeld", cid)
-        percentage = get_value(data, "in-bse-shp:ShareholdingAsAPercentageOfTotalNoOfShares", cid)
+        name = get_value(data, "NameOfTheShareholder", cid)
+        shares = get_value(data, "NumberOfFullyPaidUpEquityShares", cid)
+        percentage = get_value(data, "ShareholdingAsAPercentageOfTotalNumberOfShares", cid)
         
         if not name:
             name = primary_member
@@ -107,9 +164,7 @@ def process_file(filepath):
             shares = 0.0
             percentage = 0.0
             
-        # We only want to add leaf nodes (specific shareholders or sub-groups) to avoid double counting
-        # For simplicity in this logic, if it has a NameOfTheShareholders, it's a specific entry
-        is_specific = get_value(data, "in-bse-shp:NameOfTheShareholders", cid) is not None
+        is_specific = get_value(data, "NameOfTheShareholder", cid) is not None
         
         categories[mapped_category]["entities"].append({
             "name": name,
@@ -119,17 +174,13 @@ def process_file(filepath):
             "is_specific": is_specific
         })
 
-    # Rollup totals to avoid exceeding 100%. We take the max of (sum of specific children) OR the root member value.
     for cat in categories:
         specific_sum_pct = sum(e["percentage"] for e in categories[cat]["entities"] if e["is_specific"])
-        
-        # Find the root aggregate for this category if present
         root_pct = 0.0
         for e in categories[cat]["entities"]:
             if not e["is_specific"]:
                 root_pct = max(root_pct, e["percentage"])
                 
-        # The category percentage is whichever is higher: the sum of explicit children, or the root aggregate value
         categories[cat]["percentage"] = max(specific_sum_pct, root_pct)
         
     return {"general_info": gen_info, "categories": categories}
@@ -155,7 +206,6 @@ def main():
             for file in quarter_dir.iterdir():
                 if file.suffix == '.json' and 'raw' in file.name.lower():
                     try:
-                        print(f"Processing {company}/{quarter}/{file.name}")
                         processed = process_file(file)
                         output_data["data"][company][quarter] = processed
                     except Exception as e:
@@ -166,7 +216,7 @@ def main():
     os.makedirs('public/data', exist_ok=True)
     with open('public/data/all_shp_data.json', 'w', encoding='utf-8') as f:
         json.dump(output_data, f, indent=2)
-    print("Processing complete!")
+    print("Processing complete! Data output to public/data/all_shp_data.json")
 
 if __name__ == "__main__":
     main()

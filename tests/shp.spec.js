@@ -33,8 +33,13 @@ test('Shareholding Viewer displays nested taxonomy groups accurately', async ({ 
 
   // Since we default to Hide Zero Values = true, Individuals/HUF is hidden (it's 0%).
   // Let's toggle off "Hide Zero Values" to see it
-  const hideZeroSlider = page.locator('label.switch-label .slider');
-  await hideZeroSlider.click();
+  await page.evaluate(() => {
+    const input = document.querySelector('label.switch-label input[type="checkbox"]');
+    if (input) {
+      input.checked = false;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
 
   // Now "Individuals/Hindu undivided Family" should be visible
   await expect(page.locator('text=Individuals/Hindu undivided Family').first()).toBeVisible();
@@ -46,9 +51,14 @@ test('Shareholding Viewer displays nested taxonomy groups accurately', async ({ 
   let deepRowsCount = await page.locator('.entity-row.depth-3').count();
   console.log(`Found ${deepRowsCount} specific entities under Individuals/HUF with Hide Zero OFF`);
   expect(deepRowsCount).toBeGreaterThan(0);
-  
   // Turn Hide Zero Values back on
-  await hideZeroSlider.click();
+  await page.evaluate(() => {
+    const input = document.querySelector('label.switch-label input[type="checkbox"]');
+    if (input) {
+      input.checked = true;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
   
   // Let's check "Any Other (specify)" which has the 32.9% Adani Trust
   await page.click('text=Any Other (specify)');

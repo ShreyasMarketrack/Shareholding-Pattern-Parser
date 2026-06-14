@@ -508,7 +508,20 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -1438,7 +1451,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -2998,7 +3018,32 @@
             "explicit_shares": 2204867749.0,
             "percentage": 56.38999999999999,
             "shares": 2204867749.0,
-            "entities": [],
+            "entities": [
+              {
+                "name": "Naivedya Agarwal",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Shweta Agarwal",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Varunn Mody",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Viraj Didwania",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              }
+            ],
             "children": [
               {
                 "name": "Indian",
@@ -3325,7 +3370,38 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -3730,7 +3806,14 @@
                 "explicit_shares": 4912931.0,
                 "percentage": 0.13,
                 "shares": 4912931.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -3772,7 +3855,32 @@
             "explicit_shares": 2204867749.0,
             "percentage": 56.39,
             "shares": 2204867749.0,
-            "entities": [],
+            "entities": [
+              {
+                "name": "Naivedya Agarwal",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Shweta Agarwal",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Varunn Mody",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Viraj Didwania",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              }
+            ],
             "children": [
               {
                 "name": "Indian",
@@ -4099,7 +4207,38 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -4504,7 +4643,14 @@
                 "explicit_shares": 4912931.0,
                 "percentage": 0.13,
                 "shares": 4912931.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -6850,7 +6996,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -9916,7 +10069,14 @@
                 "explicit_shares": 590414.0,
                 "percentage": 0.2,
                 "shares": 590414.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -10654,7 +10814,14 @@
                 "explicit_shares": 526494.0,
                 "percentage": 0.18,
                 "shares": 526494.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -16442,7 +16609,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -17089,7 +17263,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -24490,7 +24671,50 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -24932,7 +25156,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -25634,7 +25865,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -26118,7 +26356,218 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -26559,7 +27008,26 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -27482,7 +27950,26 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -28108,7 +28595,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -28725,7 +29219,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -28769,7 +29270,26 @@
             "explicit_shares": 0.0,
             "percentage": 0.0,
             "shares": 0.0,
-            "entities": [],
+            "entities": [
+              {
+                "name": "Tobacco Manufacturers (India) Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Myddleton Investment Company Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Rothmans International Enterprises Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              }
+            ],
             "children": [
               {
                 "name": "Indian",
@@ -29394,7 +29914,14 @@
                 "explicit_shares": 3413727.0,
                 "percentage": 0.0,
                 "shares": 3413727.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -29436,7 +29963,26 @@
             "explicit_shares": 0.0,
             "percentage": 0.0,
             "shares": 0.0,
-            "entities": [],
+            "entities": [
+              {
+                "name": "Tobacco Manufacturers (India) Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Myddleton Investment Company Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              },
+              {
+                "name": "Rothmans International Enterprises Limited",
+                "shares": 0.0,
+                "percentage": 0.0,
+                "member_type": "ShareholdingOfPromoterAndPromoterGroupMember"
+              }
+            ],
             "children": [
               {
                 "name": "Indian",
@@ -30061,7 +30607,14 @@
                 "explicit_shares": 3113727.0,
                 "percentage": 0.0,
                 "shares": 3113727.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -32590,7 +33143,20 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -33279,7 +33845,20 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -34025,7 +34604,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -34763,7 +35349,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -37866,7 +38459,14 @@
                 "explicit_shares": 300793.0,
                 "percentage": 0.0,
                 "shares": 300793.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -38519,7 +39119,14 @@
                 "explicit_shares": 542889.0,
                 "percentage": 0.0,
                 "shares": 542889.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -39166,7 +39773,14 @@
                 "explicit_shares": 538128.0,
                 "percentage": 0.0,
                 "shares": 538128.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -39827,7 +40441,176 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -40311,7 +41094,14 @@
                 "explicit_shares": 43482551.0,
                 "percentage": 3.55,
                 "shares": 43482551.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -40977,7 +41767,176 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -41448,7 +42407,14 @@
                 "explicit_shares": 43822100.0,
                 "percentage": 3.58,
                 "shares": 43822100.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -43089,7 +44055,98 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -44023,7 +45080,98 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -44667,7 +45815,26 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -45304,7 +46471,26 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -46010,7 +47196,32 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -46694,7 +47905,32 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -47390,7 +48626,32 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -49051,7 +50312,14 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -50176,7 +51444,14 @@
                 "explicit_shares": 1566393.0,
                 "percentage": 0.1,
                 "shares": 1566393.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -51305,7 +52580,14 @@
                 "explicit_shares": 1147288.0,
                 "percentage": 0.06999999999999999,
                 "shares": 1147288.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -52434,7 +53716,14 @@
                 "explicit_shares": 1897620.0,
                 "percentage": 0.03,
                 "shares": 1897620.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -53658,7 +54947,14 @@
                 "explicit_shares": 7346902.0,
                 "percentage": 0.12,
                 "shares": 7346902.0,
-                "entities": [],
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "SharesHeldByNonPromoterNonPublicShareholdersMember"
+                  }
+                ],
                 "children": [
                   {
                     "name": "Custodian/DR Holder",
@@ -55105,7 +56401,20 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",
@@ -55758,7 +57067,20 @@
                 "explicit_shares": 0.0,
                 "percentage": 0.0,
                 "shares": 0.0,
-                "entities": []
+                "entities": [
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  },
+                  {
+                    "name": "Unknown",
+                    "shares": 0.0,
+                    "percentage": 0.0,
+                    "member_type": "ForeignVentureCapitalInvestorsMember"
+                  }
+                ]
               },
               {
                 "name": "Sovereign Wealth Funds",

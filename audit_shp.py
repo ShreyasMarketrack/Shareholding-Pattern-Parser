@@ -1,6 +1,8 @@
 import os
 import glob
 import json
+import difflib
+
 
 DATA_DIR = "D:/My Drive/New Directories/WORK/XBRL/Shareholding Pattern/Examples"
 MAPPING_FILE = "src/shp_mapping.json"
@@ -143,7 +145,17 @@ def run_audit():
         else:
             f.write(f"⚠️ **Found {len(drift_summary)} anomalous/legacy tags bearing numerical data!**\n\n")
             for tag, occurrences in drift_summary.items():
+                stripped = tag.replace('DetailsOfSharesHeldBy', '')
+                best_match = tag
+                best_score = 0
+                for valid in valid_domains:
+                    score = difflib.SequenceMatcher(None, stripped, valid).ratio()
+                    if score > best_score:
+                        best_score = score
+                        best_match = valid
+                        
                 f.write(f"### `{tag}`\n")
+                f.write(f"- **Suggested Match:** `{best_match}` *(Score: {best_score:.2f})*\n")
                 f.write(f"- **Occurrences:** {len(occurrences)} times\n")
                 f.write("- **Examples:**\n")
                 for occ in occurrences[:3]:

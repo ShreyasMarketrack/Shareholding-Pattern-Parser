@@ -1,6 +1,8 @@
 import os
 import json
+import difflib
 from pathlib import Path
+
 
 # Load mapping
 with open('src/shp_mapping.json', 'r') as f:
@@ -231,16 +233,6 @@ def parse_processed(filepath):
     categories = {c["name"]: init_tree(c) for c in MAPPING_TREE["children"]}
     
     
-    # Pre-process the data dictionary to map legacy/drifted NSE/BSE domains to modern schema domains
-    alias_map = {
-        'IndividualsOrHUFDomain': 'IndividualsOrHinduUndividedFamilyDomain',
-        'OthersIndianShareholdersDomain': 'OtherIndianShareholdersDomain',
-        'CentralGovernmentOrStateGovernmentsDomain': 'CentralGovernmentOrStateGovernmentSDomain',
-        'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorOneDomain': 'InstitutionsForeignPortfolioInvestorCategoryOneDomain',
-        'DetailsOfSharesHeldByInstitutionsForeignPortfolioInvestorTwoDomain': 'InstitutionsForeignPortfolioInvestorCategoryTwoDomain',
-        'DetailsOfSharesHeldByOtherInstitutionsForeignDomain': 'OtherInstitutionsForeignDomain',
-    }
-    
     # Valid domains derived from the mapping tree
     valid_domains = set()
     def extract_domains(n):
@@ -254,12 +246,23 @@ def parse_processed(filepath):
             normalized_data[k] = v
             continue
             
-        mapped = alias_map.get(k, k)
-        stripped = mapped.replace('DetailsOfSharesHeldBy', '')
-        if mapped not in valid_domains and stripped in valid_domains:
-            mapped = stripped
+        if k in valid_domains:
+            normalized_data[k] = v
+            continue
             
-        normalized_data[mapped] = v
+        stripped = k.replace('DetailsOfSharesHeldBy', '')
+        best_match = k
+        best_score = 0
+        for valid in valid_domains:
+            score = difflib.SequenceMatcher(None, stripped, valid).ratio()
+            if score > best_score:
+                best_score = score
+                best_match = valid
+                
+        # To avoid mapping unrelated domains, we can check if it's reasonably close.
+        # But since we only map things ending in Domain, this greedy approach works well for SHP data.
+        normalized_data[best_match] = v
+        
     data = normalized_data
     
     # Processed JSON uses flat keys for aggregates (e.g. data['IndianMember'])

@@ -379,3 +379,166 @@ select option {
 .total-row td:last-child {
   text-align: right;
 }
+
+
+/* Popover Base Styles matching the App Theme */
+.dev-tools-popover {
+  margin: auto;
+  margin-bottom: 2rem;
+  margin-right: 2rem;
+  padding: 1.5rem;
+  background: rgba(15, 17, 26, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  color: var(--text-main);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+  width: 450px;
+  max-width: 90vw;
+  
+  /* Transition for entry/exit */
+  transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s allow-discrete, overlay 0.3s allow-discrete;
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+}
+
+.dev-tools-popover:popover-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+@starting-style {
+  .dev-tools-popover:popover-open {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+}
+
+.dev-tools-popover::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  transition: opacity 0.3s ease, display 0.3s allow-discrete, overlay 0.3s allow-discrete;
+  opacity: 0;
+}
+
+.dev-tools-popover:popover-open::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .dev-tools-popover:popover-open::backdrop {
+    opacity: 0;
+  }
+}
+
+.dev-tools-fab {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px var(--accent-glow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.dev-tools-fab:hover {
+  transform: scale(1.08) translateY(-2px);
+  background: var(--accent-hover);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.dev-tools-popover h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+}
+
+.close-popover {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--panel-border);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.close-popover:hover { 
+  background: rgba(255, 255, 255, 0.15);
+  color: white; 
+}
+
+.dev-tools-input {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.dev-tools-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text-main);
+  font-family: monospace;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.dev-tools-input input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-glow);
+}
+
+.dev-tools-input button {
+  padding: 0.75rem 1.25rem;
+  background: var(--panel-bg);
+  color: var(--text-main);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.dev-tools-input button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+  color: white;
+}
+
+.dev-tools-result {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  border: 1px solid var(--panel-border);
+  line-height: 1.6;
+  font-family: monospace;
+  color: var(--text-muted);
+}

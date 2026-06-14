@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import './App.css';
+import MAPPING_TREE from './shp_mapping.json';
+import { findBestMatch } from './utils/fuzzy.js';
 
 const ChevronRight = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -253,6 +255,56 @@ function App() {
           </tbody>
         </table>
       </div>
+
+      {/* Floating Action Button utilizing declarative popover control */}
+      <button 
+        className="dev-tools-fab" 
+        popovertarget="heuristic-dev-tools"
+        title="Taxonomy Drift Dev Tools"
+      >
+        🛠️
+      </button>
+
+      {/* Modern Native Popover API with @starting-style animations */}
+      <div id="heuristic-dev-tools" popover="auto" className="dev-tools-popover">
+        <h3>
+          Taxonomy Drift Dev Tools
+          <button className="close-popover" popovertarget="heuristic-dev-tools" popovertargetaction="hide">×</button>
+        </h3>
+        <div className="dev-tools-content">
+          <p style={{marginTop: 0, fontSize: '0.9rem', color: '#ccc'}}>
+            Test the fuzzy string matching heuristic against live taxonomy data.
+          </p>
+          <div className="dev-tools-input">
+            <input 
+              type="text" 
+              placeholder="Enter legacy taxonomy tag..."
+              id="dev-fuzzy-input"
+            />
+            <button onClick={() => {
+              const input = document.getElementById('dev-fuzzy-input').value;
+              if (!input) return;
+              
+              const validDomains = new Set();
+              const extractDomains = (n) => {
+                if (n.member) validDomains.add(n.member.replace('Member', 'Domain'));
+                (n.children || []).forEach(extractDomains);
+              };
+              (MAPPING_TREE.children || []).forEach(extractDomains);
+              
+              const result = findBestMatch(input, Array.from(validDomains));
+              document.getElementById('dev-fuzzy-result').innerHTML = `
+                <div style="margin-bottom:0.5rem"><strong>Original:</strong> <span style="word-break:break-all">${result.original}</span></div>
+                <div style="margin-bottom:0.5rem"><strong>Stripped:</strong> <span style="word-break:break-all">${result.stripped}</span></div>
+                <div style="margin-bottom:0.5rem"><strong>Best Match:</strong> <span style="color: #a777e3; font-weight: bold; word-break:break-all">${result.bestMatch}</span></div>
+                <div><strong>Sorensen-Dice Score:</strong> <span style="color: #4CAF50">${result.score}</span></div>
+              `;
+            }}>Test Heuristic</button>
+          </div>
+          <div id="dev-fuzzy-result" className="dev-tools-result" style={{fontSize: '0.85rem'}}></div>
+        </div>
+      </div>
+
     </div>
   );
 }

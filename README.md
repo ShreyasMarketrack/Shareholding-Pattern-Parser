@@ -20,6 +20,35 @@ This application processes raw XBRL JSON extracts or pre-processed NSE/BSE domai
 
 ---
 
+## 🔄 Data Pipeline Workflow
+
+```mermaid
+graph TD
+    A[(Raw NSE/BSE JSON Extracts)] --> B(Python Parser: process_shp.py)
+    C[(shp_mapping.json <br/> Source of Truth)] --> B
+    
+    subgraph Data Processing Layer
+        B --> D{Gestalt Fuzzy Matching}
+        D -- Matches valid domains --> E[Mathematical Rollups]
+        D -- Deprecated/Legacy tags --> F[difflib Heuristic Normalization]
+        F --> E
+    end
+    
+    E --> G[(all_shp_data_raw.json)]
+    E --> H[(all_shp_data_processed.json)]
+    
+    G --> I[React Frontend: App.jsx]
+    H --> I
+    
+    subgraph Visualization Layer
+        I --> J[Zero-Value Filtration]
+        J --> K[Recursive N-ary Tree Rendering]
+        K --> L[Interactive Data Tables & Dev Tools]
+    end
+```
+
+---
+
 ## 🧠 Architectural Overview
 
 ### 1. JSON Taxonomy Grouping (`shp_mapping.json`)
